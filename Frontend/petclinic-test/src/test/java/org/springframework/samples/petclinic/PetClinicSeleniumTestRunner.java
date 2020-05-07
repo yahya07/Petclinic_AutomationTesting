@@ -17,7 +17,7 @@ import static java.util.logging.Logger.getLogger;
 public class PetClinicSeleniumTestRunner {
 
     static {
-        System.setProperty("webdriver.chrome.driver", "/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", System.getenv("driverPath"));
         System.setProperty("webdriver.chrome.silentOutput", "true");
         getLogger("org.openqa.selenium").setLevel(SEVERE);
     }
