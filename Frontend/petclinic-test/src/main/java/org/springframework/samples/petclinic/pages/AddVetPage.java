@@ -17,6 +17,14 @@ public class AddVetPage extends Page {
     private static final String LAST_NAME = "Bar";
     private static final String ALL_VETS_TABLET = "/html/body/app-root/app-vet-list/div/div/table/tbody/tr/td[1]";
     private static final String FULL_NAME = FIRST_NAME + " " + LAST_NAME;
+    private static final String ERROR_CLASS = "help-block";
+    private static final String TWO_CHARS_ERROR = "First name must be at least 2 characters long";
+    private static final String CHAR_1 = "X";
+    private static final String CHAR_2 = "Y";
+    private static final String SHORTCOMB = CHAR_1 + " "+ CHAR_2;
+    private static final String NUM_SYM_1 = "8347769245()?";
+    private static final String NUM_SYM_2 = "&%^$#$%%6357";
+    private static final String NUMSYMCOMB = NUM_SYM_1 + " "+ NUM_SYM_2;
 
     public AddVetPage() {
         super(TITLE, HEADER_XPATH);
@@ -29,8 +37,19 @@ public class AddVetPage extends Page {
     public void fillValid() {
         fill("firstName", FIRST_NAME);
         fill("lastName", LAST_NAME);
-        selectFirst("specialties");
+    }
+    public void fillNumericAndSymbols() {
+        fill("firstName", NUM_SYM_1);
+        fill("lastName", NUM_SYM_2);
+    }
 
+    public void fillOneChar() {
+        fill("firstName",CHAR_1);
+        fill("lastName", CHAR_2);
+    }
+    public void chooseType()
+    {
+        selectFirst("specialties");
     }
 
     public void clickSave() {
@@ -41,7 +60,26 @@ public class AddVetPage extends Page {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
        List<WebElement> tableElements = driver.findElements(By.xpath(ALL_VETS_TABLET));
        return FULL_NAME.equals(tableElements.get(tableElements.size()-1).getText());
+}
+    public boolean isShortAdded() {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        List<WebElement> tableElements = driver.findElements(By.xpath(ALL_VETS_TABLET));
+        return SHORTCOMB.equals(tableElements.get(tableElements.size()-1).getText());
+    }
 
+    public boolean isNumericSymbolsAdded() {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        List<WebElement> tableElements = driver.findElements(By.xpath(ALL_VETS_TABLET));
+        return NUMSYMCOMB.equals(tableElements.get(tableElements.size()-1).getText());
+    }
+
+    public boolean isTwoCharErrorShowing()
+    {
+        return isErrorShowing(ERROR_CLASS,TWO_CHARS_ERROR);
+    }
+public boolean pageNotRedirected(){
+
+        return isNotRedirected(URL);
 }
 
 }

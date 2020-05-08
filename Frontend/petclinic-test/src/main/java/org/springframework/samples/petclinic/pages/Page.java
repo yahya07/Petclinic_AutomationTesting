@@ -72,8 +72,19 @@ public abstract class Page {
     private WebElement waitFor(String id, int waitInterval) {
         return (new WebDriverWait(driver, waitInterval)).until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
     }
-    
+
     protected boolean exists(String id) {
         return driver.findElement(By.id(id)) != null;
     }
+
+    public boolean isNotRedirected(String url)
+    {
+        return url.equals(driver.getCurrentUrl());
+    }
+    public boolean isErrorShowing(String className,String errorMsg)
+    {
+        return errorMsg.equals(driver.findElement(By.className(className)).getText());
+    }
+
+
 }
