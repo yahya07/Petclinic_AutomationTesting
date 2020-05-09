@@ -26,6 +26,7 @@ public class AddVetPage extends Page {
     private static final String NUM_SYM_2 = "&%^$#$%%6357";
     private static final String NUMSYMCOMB = NUM_SYM_1 + " "+ NUM_SYM_2;
 
+
     public AddVetPage() {
         super(TITLE, HEADER_XPATH);
     }
@@ -57,22 +58,15 @@ public class AddVetPage extends Page {
     }
 
     public boolean isAdded() {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-       List<WebElement> tableElements = driver.findElements(By.xpath(ALL_VETS_TABLET));
-       return FULL_NAME.equals(tableElements.get(tableElements.size()-1).getText());
+       return FULL_NAME.equals(allTableElements(ALL_VETS_TABLET).get(allTableElements(ALL_VETS_TABLET).size()-1).getText());
 }
     public boolean isShortAdded() {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        List<WebElement> tableElements = driver.findElements(By.xpath(ALL_VETS_TABLET));
-        return SHORTCOMB.equals(tableElements.get(tableElements.size()-1).getText());
+        return SHORTCOMB.equals(allTableElements(ALL_VETS_TABLET).get(allTableElements(ALL_VETS_TABLET).size()-1).getText());
     }
 
     public boolean isNumericSymbolsAdded() {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        List<WebElement> tableElements = driver.findElements(By.xpath(ALL_VETS_TABLET));
-        return NUMSYMCOMB.equals(tableElements.get(tableElements.size()-1).getText());
+        return NUMSYMCOMB.equals(allTableElements(ALL_VETS_TABLET).get(allTableElements(ALL_VETS_TABLET).size()-1).getText());
     }
-
     public boolean isTwoCharErrorShowing()
     {
         return isErrorShowing(ERROR_CLASS,TWO_CHARS_ERROR);

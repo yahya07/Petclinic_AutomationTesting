@@ -6,7 +6,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.samples.petclinic.pages.AddVetPage;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
 
 
 public class AddVetSteps {

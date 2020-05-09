@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public abstract class Page {
@@ -16,11 +17,14 @@ public abstract class Page {
     private String title;
     private String pageHeaderXpath;
 
+
+
     protected Page( String title, String pageHeaderXpath) {
         this.driver = new ChromeDriver();
         this.title = title;
         this.pageHeaderXpath = pageHeaderXpath;
     }
+
 
     public void closeBrowser()
     {
@@ -32,6 +36,8 @@ public abstract class Page {
     public boolean isCurrent() {
         return title.equals(driver.findElement(By.xpath(pageHeaderXpath)).getText());
     }
+
+
 
 
 
@@ -59,6 +65,14 @@ public abstract class Page {
 
     }
 
+    protected List<WebElement> allTableElements(String xpath)
+    {
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+         List<WebElement> tableElements = driver.findElements(By.xpath(xpath));
+         return tableElements;
+    }
+
+
 
 
     protected void click(String id) {
@@ -79,6 +93,7 @@ public abstract class Page {
 
     public boolean isNotRedirected(String url)
     {
+
         return url.equals(driver.getCurrentUrl());
     }
     public boolean isErrorShowing(String className,String errorMsg)
