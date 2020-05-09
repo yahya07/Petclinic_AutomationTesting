@@ -26,10 +26,18 @@ public class OwnerInformationPage extends Page {
         return new EditPetPage();
     }
 
+    public int removeFirstPet(){
+
+        int before = petNames().size();
+        cssClick("body > app-root > app-owner-detail > div > div > table:nth-child(10) > tr > app-pet-list:nth-child(1) > table > tr > td:nth-child(1) > dl > button:nth-child(8)");
+        refresh();
+        int after = petNames().size();
+        return before - after;
+    }
+
     public List<String> petNames(){
         implicitlyWait(1);
         List<WebElement> pets = getElements("/html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list/table/tr/td[1]/dl/dd[1]");
-        //return pets.get(pets.size()-1).getText();
         return pets.stream()
                 .map(pet -> pet.getText())
                 .collect(Collectors.toList());

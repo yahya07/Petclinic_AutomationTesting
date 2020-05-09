@@ -1,6 +1,7 @@
 package org.springframework.samples.petclinic.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -52,6 +53,11 @@ public abstract class Page {
         element.sendKeys(value);
     }
 
+    protected void clearField(String cssPath){
+        driver.findElement(By.cssSelector(cssPath)).sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
+
+
+    }
     protected void selectFirst(String id) {
         new Select(driver.findElement(By.id(id))).selectByIndex(1);
     }
@@ -87,5 +93,9 @@ public abstract class Page {
 
     protected boolean exists(String id) {
         return driver.findElement(By.id(id)) != null;
+    }
+
+    protected void refresh(){
+        driver.navigate().refresh();
     }
 }

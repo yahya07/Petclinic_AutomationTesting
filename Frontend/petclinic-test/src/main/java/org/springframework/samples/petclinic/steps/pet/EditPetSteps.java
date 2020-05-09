@@ -34,13 +34,13 @@ public class EditPetSteps {
 
     @And("I update the birth date field with a non-date formatted value")
     public void iUpdateTheBirthDateFieldWithANonDateFormattedValue() {
-        editPetPage.fillInForm(name,"gh544",index);
+        editPetPage.fillInForm(name,"abc",index);
         ownerInformationPage = editPetPage.submit();
     }
 
     @And("I update the name field with symbols and numbers rather than words")
     public void iUpdateTheNameFieldWithSymbolsAndNumbersRatherThanWords() {
-        name = "%%$^545";
+        name = "%45$^";
         editPetPage.fillInForm(name,birthDate,index);
         ownerInformationPage = editPetPage.submit();
     }
