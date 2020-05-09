@@ -3,7 +3,7 @@ package org.springframework.samples.petclinic.steps.vet;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.springframework.samples.petclinic.pages.AllVetsPage;
+import org.springframework.samples.petclinic.pages.vet.AllVetsPage;
 import static org.junit.Assert.assertTrue;
 
 public class RemoveVetSteps {

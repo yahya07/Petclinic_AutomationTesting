@@ -1,8 +1,9 @@
-package org.springframework.samples.petclinic.pages;
+package org.springframework.samples.petclinic.pages.vet;
 
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.springframework.samples.petclinic.pages.Page;
 
 import java.util.Iterator;
 import java.util.List;
@@ -10,8 +11,6 @@ import java.util.concurrent.TimeUnit;
 
 public class AddVetPage extends Page {
     private static final String URL = "http://localhost:8081/petclinic/vets/add";
-    private static final String HEADER_XPATH = "/html/body/app-root/app-vet-add/div/div/h2";
-    private static final String TITLE = "New Veterinarian";
     private static final String SAVE_BUTTON = "#vet > div:nth-child(5) > div > button:nth-child(3)";
     private static final String FIRST_NAME = "Foo";
     private static final String LAST_NAME = "Bar";
@@ -28,7 +27,7 @@ public class AddVetPage extends Page {
 
 
     public AddVetPage() {
-        super(TITLE, HEADER_XPATH);
+        super("New Veterinarian");
     }
 
     public void navigateToAddVet() {

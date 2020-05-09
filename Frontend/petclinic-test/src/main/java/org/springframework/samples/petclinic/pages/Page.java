@@ -15,14 +15,11 @@ public abstract class Page {
 
     protected final WebDriver driver;
     private String title;
-    private String pageHeaderXpath;
+    private final String TITLE_TAG = "h2";
 
-
-
-    protected Page( String title, String pageHeaderXpath) {
+    protected Page( String title) {
         this.driver = new ChromeDriver();
         this.title = title;
-        this.pageHeaderXpath = pageHeaderXpath;
     }
 
 
@@ -34,12 +31,8 @@ public abstract class Page {
 
 
     public boolean isCurrent() {
-        return title.equals(driver.findElement(By.xpath(pageHeaderXpath)).getText());
+        return title.equals(driver.findElement(By.tagName(TITLE_TAG)).getText());
     }
-
-
-
-
 
     protected void goTo(String url) {
         driver.get(url);
@@ -95,6 +88,10 @@ public abstract class Page {
     {
 
         return url.equals(driver.getCurrentUrl());
+    }
+
+    protected void refresh(){
+        driver.navigate().refresh();
     }
     public boolean isErrorShowing(String className,String errorMsg)
     {
