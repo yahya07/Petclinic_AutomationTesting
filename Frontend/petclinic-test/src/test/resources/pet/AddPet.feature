@@ -22,3 +22,10 @@ Feature: Add Pet
     When  I submit the form
     Then  I remain in the same page
 
+
+  Scenario: Create pet with symbols and numbers in the name field
+    Given I am on the add-pet form
+    And   I enter symbols and numbers rather than words in the name field
+    When  I submit the form
+    Then  The new pet will be displayed at the owner information page
+

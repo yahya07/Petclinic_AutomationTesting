@@ -13,8 +13,8 @@ public class AddPetSteps {
 
     private AddPetPage addPetPage = new AddPetPage();
     private OwnerInformationPage ownerInformationPage;
-    private String name = "pet1";
-    private String birthDate = "2020/05/13";
+    private String name = "zzz";
+    private String birthDate = "2020/04/13";
     private int index = 2;
 
 
@@ -30,7 +30,7 @@ public class AddPetSteps {
 
     @Then("The new pet will be displayed at the owner information page")
     public void theNewPetWillBeDisplayedAtTheOwnerInformationPage() {
-        assertTrue(name.equals(ownerInformationPage.lastAddedPetName()));
+        assertTrue(ownerInformationPage.lastAddedPetName().contains(name));
     }
 
     @And("I leave all the fields empty")
@@ -43,10 +43,16 @@ public class AddPetSteps {
         ownerInformationPage = addPetPage.fillInForm(name,"abc", index);
     }
 
+    @And("I enter symbols and numbers rather than words in the name field")
+    public void iEnterSymbolsAndNumbersRatherThanWordsInTheNameField() {
+        ownerInformationPage = addPetPage.fillInForm("^5$%^",birthDate, index);
+    }
+
     @Then("I remain in the same page")
     public void iRemainInTheSamePage() {
         assertTrue(addPetPage.isCurrent());
     }
+
 
 
 }
