@@ -20,6 +20,7 @@ public class AddPetSteps {
 
     @Given("I am on the add-pet form")
     public void iAmOnTheAddPetForm() {
+        addPetPage.goToAddPetPage();
         assertTrue(addPetPage.isCurrent());
     }
 

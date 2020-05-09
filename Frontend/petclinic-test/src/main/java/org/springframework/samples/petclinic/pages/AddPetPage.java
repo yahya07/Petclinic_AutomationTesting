@@ -11,9 +11,11 @@ public class AddPetPage extends Page {
 
     public AddPetPage() {
         super("Add Pet");
-        goTo(URL);
     }
 
+    public void goToAddPetPage(){
+        goTo(URL);
+    }
 
     public OwnerInformationPage fillInForm(String name, String birthDate, int index){
 
