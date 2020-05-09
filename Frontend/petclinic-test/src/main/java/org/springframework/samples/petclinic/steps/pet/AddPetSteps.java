@@ -13,7 +13,7 @@ public class AddPetSteps {
 
     private AddPetPage addPetPage = new AddPetPage();
     private OwnerInformationPage ownerInformationPage;
-    private String name = "zzz";
+    private String name = "Test";
     private String birthDate = "2020/04/13";
     private int index = 2;
 
