@@ -14,13 +14,13 @@ Feature: Add Pet
     Given I am on the add-pet form
     And   I leave all the fields empty
     When  I submit the form
-    Then  I remain in the same page
+    Then I remain in the add pet page
 
   Scenario: Birth data must be in a date format
     Given I am on the add-pet form
     And   I enter a non-date formatted value into the birth date field
     When  I submit the form
-    Then  I remain in the same page
+    Then  I remain in the add pet page
 
 
   Scenario: Create pet with symbols and numbers in the name field

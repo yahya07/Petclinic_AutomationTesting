@@ -48,11 +48,10 @@ public class AddPetSteps {
         ownerInformationPage = addPetPage.fillInForm("^5$%^",birthDate, index);
     }
 
-    @Then("I remain in the same page")
-    public void iRemainInTheSamePage() {
+    @Then("I remain in the add pet page")
+    public void iRemainInTheAddPetPage() {
         assertTrue(addPetPage.isCurrent());
     }
-
 
 
 }
