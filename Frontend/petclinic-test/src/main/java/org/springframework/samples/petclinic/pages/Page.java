@@ -15,7 +15,7 @@ public abstract class Page {
 
     private static final WebDriver driver = new ChromeDriver();
     private String title;
-    private static final String pageHeaderXpath = "/html/body/app-root/app-pet-add/div/div/h2";
+    private static final String pageHeaderXpath = "h2";
 
 
     protected Page(String title) {
@@ -24,7 +24,7 @@ public abstract class Page {
 
 
     public boolean isCurrent() {
-        return title.equals(driver.findElement(By.xpath(pageHeaderXpath)).getText()); }
+        return title.equals(driver.findElement(By.tagName(pageHeaderXpath)).getText()); }
 
     protected void goTo(String url) {
         driver.get(url);

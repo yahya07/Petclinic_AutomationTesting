@@ -26,27 +26,31 @@ public class AddPetSteps {
 
     @And("I enter valid pet data")
     public void iEnterValidPetData() {
-        ownerInformationPage = addPetPage.fillInForm(name,birthDate, index);
+        addPetPage.fillInForm(name,birthDate, index);
+        ownerInformationPage = addPetPage.submit();
     }
 
     @Then("The new pet will be displayed at the owner information page")
     public void theNewPetWillBeDisplayedAtTheOwnerInformationPage() {
-        assertTrue(ownerInformationPage.lastAddedPetName().contains(name));
+        assertTrue(ownerInformationPage.petNames().contains(name));
     }
 
     @And("I leave all the fields empty")
     public void iLeaveAllTheFieldsEmpty() {
-        ownerInformationPage = addPetPage.fillInForm("","", 1);
+        ownerInformationPage = addPetPage.submit();
     }
 
     @And("I enter a non-date formatted value into the birth date field")
     public void iEnterANonDateFormattedValueIntoTheBirthDateField() {
-        ownerInformationPage = addPetPage.fillInForm(name,"abc", index);
+        addPetPage.fillInForm(name,"abc", index);
+        ownerInformationPage = addPetPage.submit();
     }
 
     @And("I enter symbols and numbers rather than words in the name field")
     public void iEnterSymbolsAndNumbersRatherThanWordsInTheNameField() {
-        ownerInformationPage = addPetPage.fillInForm("^5$%^",birthDate, index);
+        name = "^5$%^";
+        addPetPage.fillInForm(name,birthDate, index);
+        ownerInformationPage = addPetPage.submit();
     }
 
     @Then("I remain in the add pet page")

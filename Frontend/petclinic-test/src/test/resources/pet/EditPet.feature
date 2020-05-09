@@ -5,27 +5,20 @@ Feature: Edit Pet
 
   Scenario: Successfully edit a pet
     Given I am on the edit-pet form
-    And   I enter valid pet data
+    And   I update with valid pet data
     When  I submit the form
     Then  The pet information will be updated and displayed at the owner information page
 
-
-  Scenario: Submit with empty fields
-    Given I am on the edit-pet form
-    And   I leave all the fields empty
-    When  I submit the form
-    Then  I remain in the edit pet page
-
-  Scenario: Birth data must be in a date format
-    Given I am on the edit-pet form
-    And   I enter a non-date formatted value into the birth date field
-    When  I submit the form
-    Then  I remain in the edit pet page
 
 
   Scenario: Edit pet with symbols and numbers in the name field
     Given I am on the edit-pet form
-    And   I enter symbols and numbers rather than words in the name field
+    And   I update the name field with symbols and numbers rather than words
     When  I submit the form
     Then  The pet information will be updated and displayed at the owner information page
 
+  Scenario: Birth data must be in a date format
+    Given I am on the edit-pet form
+    And   I update the birth date field with a non-date formatted value
+    When  I submit the form
+    Then  I remain in the edit pet page
