@@ -30,11 +30,10 @@ public class AddOwnerPage extends Page {
 
     public static final String TICK_CLASSNAME="glyphicon form-control-feedback glyphicon-ok";
     public static final String URL="http://localhost:8081/petclinic/owners/add";
-    public static final String ALL_OWNERS_TABLE="/html/body/app-root/app-owner-list/div/div/div/table/tbody/tr/td[1]";
 
     public AddOwnerPage(WebDriver driver) {
         super(driver,"New Owner");
-        goTo(URL);
+
     }
 
     public void enterValidData(){
@@ -55,15 +54,16 @@ public class AddOwnerPage extends Page {
         return (firstNameTick&lastNameTick&addressTick&cityTick&telephoneTick);
     }
     //todo: it's not stay on the list page
-    public void submit() {
+    public AllOwnersPage submit() {
         System.out.println("in the submit method");
         cssClick(CLICK_BUTTON);
+        return new AllOwnersPage(driver);
         // driver.get(driver.getCurrentUrl());
     }
-    public boolean isAdded() {
-        String fullName=FIRST_NAME+" "+LAST_NAME;
-        return fullName.equals(allTableElements(ALL_OWNERS_TABLE).get(allTableElements(ALL_OWNERS_TABLE).size()-1).getText());
-    }
+//    public boolean isAdded() {
+//        String fullName=FIRST_NAME+" "+LAST_NAME;
+//        return fullName.equals(allTableElements(ALL_OWNERS_TABLE).get(allTableElements(ALL_OWNERS_TABLE).size()-1).getText());
+//    }
     public boolean pageNotRedirected(){
 
         return isNotRedirected(URL);

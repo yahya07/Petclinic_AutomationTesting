@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.samples.petclinic.pages.AddOwnerPage;
 import org.springframework.samples.petclinic.pages.AllOwnersPage;
+import org.springframework.samples.petclinic.pages.HomePage;
 //import pages.AddOwnerPage;
 //import pages.HomePage;
 //import pages.MyAccountPage;
@@ -24,14 +25,18 @@ public class AddOwnerSteps {
         System.setProperty("webdriver.chrome.silentOutput", "true");
         getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
     }
+    public static final String FIRST_NAME= "first name tester";
+    //+ new Random();
+    public static final String LAST_NAME = "lastName tester";
     private  AddOwnerPage addOwnerPage;
     //= new AddOwnerPage();
-
-    //private AllOwnersPage allOwnersPage;
+    private HomePage homePage=new HomePage();
+    private AllOwnersPage allOwnersPage;
 
     @Given("I am on the add-owner form")
     public void iAmOnTheAddOwnerForm() {
-
+        homePage.clickOwners();
+        addOwnerPage=homePage.ClickAddOwner();
         System.out.println("wibble iAmOnTheAddOwnerForm");
         assertTrue(addOwnerPage.isCurrent());
     }
@@ -55,15 +60,15 @@ public class AddOwnerSteps {
 
     @When("I submit the form")
     public void iSubmitTheForm() {
-        addOwnerPage.submit();
+       allOwnersPage= addOwnerPage.submit();
 
         // assertTrue(allOwnersPage.isCurrentByHeader());
     }
     @Then("The new owner will be displayed at the end of the owner's list")
     public void theNewOwnerWillBeDisplayedAtTheEndOfTheOwnerSList() {
 
-        assertTrue(addOwnerPage.isAdded());
-        addOwnerPage.closeBrowser();
+        assertTrue(allOwnersPage.isAdded(FIRST_NAME,LAST_NAME));
+       // addOwnerPage.closeBrowser();
     }
 
     @When("I enter invalid data ")
