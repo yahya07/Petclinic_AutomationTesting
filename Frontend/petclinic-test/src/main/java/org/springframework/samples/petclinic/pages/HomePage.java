@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.pages;
 
+
 public class HomePage extends Page {
 
     private static final String URL = "http://localhost:8081/petclinic/";
@@ -57,8 +58,6 @@ public class HomePage extends Page {
         return new Specialties();
     }
 */
-
-
 
 
 }
