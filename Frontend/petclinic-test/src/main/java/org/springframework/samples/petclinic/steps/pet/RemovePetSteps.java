@@ -3,19 +3,25 @@ package org.springframework.samples.petclinic.steps.pet;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.springframework.samples.petclinic.pages.AllOwnersPage;
+import org.springframework.samples.petclinic.pages.HomePage;
 import org.springframework.samples.petclinic.pages.OwnerInformationPage;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class RemovePetSteps {
 
-    private OwnerInformationPage ownerInformationPage = new OwnerInformationPage();
+    private HomePage homePage = new HomePage();
+    private AllOwnersPage allOwnersPage;
+    private OwnerInformationPage ownerInformationPage;
     private int lengthDifference;
 
     @Given("I am on the owner information page")
     public void iAmOnTheOwnerInformationPage() {
-        ownerInformationPage.goToOwnerInformationPage();
+        allOwnersPage = homePage.goToOwnersList();
+        ownerInformationPage = allOwnersPage.getFirstOwner();
         assertTrue(ownerInformationPage.isCurrent());
     }
 

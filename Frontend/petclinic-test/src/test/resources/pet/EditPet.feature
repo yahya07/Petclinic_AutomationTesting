@@ -10,7 +10,6 @@ Feature: Edit Pet
     Then  The pet information will be updated and displayed at the owner information page
 
 
-
   Scenario: Edit pet with symbols and numbers in the name field
     Given I am on the edit-pet form
     And   I update the name field with symbols and numbers rather than words

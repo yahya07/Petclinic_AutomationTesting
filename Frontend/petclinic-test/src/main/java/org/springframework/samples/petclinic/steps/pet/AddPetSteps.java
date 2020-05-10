@@ -1,18 +1,24 @@
 package org.springframework.samples.petclinic.steps.pet;
 
+import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.springframework.samples.petclinic.pages.AddPetPage;
+import org.springframework.samples.petclinic.pages.AllOwnersPage;
+import org.springframework.samples.petclinic.pages.HomePage;
 import org.springframework.samples.petclinic.pages.OwnerInformationPage;
+import org.springframework.samples.petclinic.pages.pet.AddPetPage;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 
 public class AddPetSteps {
 
-    private AddPetPage addPetPage = new AddPetPage();
+    private HomePage homePage = new HomePage();
+    private AllOwnersPage allOwnersPage;
     private OwnerInformationPage ownerInformationPage;
+    private AddPetPage addPetPage;
     private String name = "Test";
     private String birthDate = "2020/04/13";
     private int index = 2;
@@ -20,13 +26,15 @@ public class AddPetSteps {
 
     @Given("I am on the add-pet form")
     public void iAmOnTheAddPetForm() {
-        addPetPage.goToAddPetPage();
+        allOwnersPage = homePage.goToOwnersList();
+        ownerInformationPage = allOwnersPage.getFirstOwner();
+        addPetPage = ownerInformationPage.addNewPet();
         assertTrue(addPetPage.isCurrent());
     }
 
     @And("I enter valid pet data")
     public void iEnterValidPetData() {
-        addPetPage.fillInForm(name,birthDate, index);
+        addPetPage.fillInForm(name, birthDate, index);
         ownerInformationPage = addPetPage.submit();
     }
 
@@ -42,14 +50,14 @@ public class AddPetSteps {
 
     @And("I enter a non-date formatted value into the birth date field")
     public void iEnterANonDateFormattedValueIntoTheBirthDateField() {
-        addPetPage.fillInForm(name,"abc", index);
+        addPetPage.fillInForm(name, "abc", index);
         ownerInformationPage = addPetPage.submit();
     }
 
     @And("I enter symbols and numbers rather than words in the name field")
     public void iEnterSymbolsAndNumbersRatherThanWordsInTheNameField() {
         name = "^5$%^";
-        addPetPage.fillInForm(name,birthDate, index);
+        addPetPage.fillInForm(name, birthDate, index);
         ownerInformationPage = addPetPage.submit();
     }
 
@@ -57,6 +65,5 @@ public class AddPetSteps {
     public void iRemainInTheAddPetPage() {
         assertTrue(addPetPage.isCurrent());
     }
-
 
 }

@@ -5,7 +5,6 @@ import static org.junit.Assert.assertTrue;
 
 
 public class SharedVetSteps {
-    private final AddVetPage addVet = new AddVetPage();
 
 
 

@@ -1,10 +1,14 @@
-package org.springframework.samples.petclinic.pages;
+package org.springframework.samples.petclinic.pages.pet;
+
+import org.openqa.selenium.WebDriver;
+import org.springframework.samples.petclinic.pages.OwnerInformationPage;
+import org.springframework.samples.petclinic.pages.Page;
 
 public class EditPetPage extends Page {
 
 
-    protected EditPetPage() {
-        super("Pet");
+    public EditPetPage(WebDriver driver) {
+        super("Pet",driver);
     }
 
     public void fillInForm(String name, String birthDate, int index) {
@@ -17,7 +21,7 @@ public class EditPetPage extends Page {
 
     public OwnerInformationPage submit() {
         cssClick("body > app-root > app-pet-edit > div > div > form > div:nth-child(7) > div > button:nth-child(3)");
-        return new OwnerInformationPage();
+        return new OwnerInformationPage(driver);
     }
 
 
