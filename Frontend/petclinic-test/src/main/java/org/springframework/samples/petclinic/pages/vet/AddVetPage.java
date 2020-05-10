@@ -1,13 +1,9 @@
 package org.springframework.samples.petclinic.pages.vet;
 
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver;
 import org.springframework.samples.petclinic.pages.Page;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class AddVetPage extends Page {
     private static final String URL = "http://localhost:8081/petclinic/vets/add";
@@ -26,8 +22,8 @@ public class AddVetPage extends Page {
     private static final String NUMSYMCOMB = NUM_SYM_1 + " "+ NUM_SYM_2;
 
 
-    public AddVetPage() {
-        super("New Veterinarian");
+    public AddVetPage(WebDriver driver) {
+        super("New Veterinarian",driver);
     }
 
     public void navigateToAddVet() {
@@ -57,22 +53,23 @@ public class AddVetPage extends Page {
     }
 
     public boolean isAdded() {
-       return FULL_NAME.equals(allTableElements(ALL_VETS_TABLET).get(allTableElements(ALL_VETS_TABLET).size()-1).getText());
+       return FULL_NAME.equals(getElements(ALL_VETS_TABLET).get(getElements(ALL_VETS_TABLET).size()-1).getText());
 }
     public boolean isShortAdded() {
-        return SHORTCOMB.equals(allTableElements(ALL_VETS_TABLET).get(allTableElements(ALL_VETS_TABLET).size()-1).getText());
+        return SHORTCOMB.equals(getElements(ALL_VETS_TABLET).get(getElements(ALL_VETS_TABLET).size()-1).getText());
     }
 
     public boolean isNumericSymbolsAdded() {
-        return NUMSYMCOMB.equals(allTableElements(ALL_VETS_TABLET).get(allTableElements(ALL_VETS_TABLET).size()-1).getText());
+        return NUMSYMCOMB.equals(getElements(ALL_VETS_TABLET).get(getElements(ALL_VETS_TABLET).size()-1).getText());
     }
     public boolean isTwoCharErrorShowing()
     {
         return isErrorShowing(ERROR_CLASS,TWO_CHARS_ERROR);
     }
-public boolean pageNotRedirected(){
 
-        return isNotRedirected(URL);
+    public boolean pageNotRedirected(){
+
+        return isCurrentUrl(URL);
 }
 
 }

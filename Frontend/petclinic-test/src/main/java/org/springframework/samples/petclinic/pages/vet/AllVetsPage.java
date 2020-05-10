@@ -1,6 +1,7 @@
 package org.springframework.samples.petclinic.pages.vet;
 
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.json.JsonOutput;
 import org.springframework.samples.petclinic.pages.Page;
 
@@ -12,13 +13,13 @@ public class AllVetsPage extends Page {
     private static final String ALL_VETS_TABLET = "/html/body/app-root/app-vet-list/div/div/table/tbody/tr/td[1]";
     private int allRowsCount = 0;
     private int remainingRowsCount = 0;
-    public AllVetsPage() {
-        super("Veterinarians");
+    public AllVetsPage(WebDriver driver) {
+        super("Veterinarians",driver);
     }
 
     public void navigateToAllPets() {
         goTo(URL);
-        allRowsCount =allTableElements(ALL_VETS_TABLET).size();
+        allRowsCount =getElements(ALL_VETS_TABLET).size();
     }
 
 
@@ -26,7 +27,7 @@ public class AllVetsPage extends Page {
     {
         cssClick(DELETE_BUTTON);
         refresh();
-        remainingRowsCount = allTableElements(ALL_VETS_TABLET).size();
+        remainingRowsCount = getElements(ALL_VETS_TABLET).size();
     }
 
     public boolean isDeleted()

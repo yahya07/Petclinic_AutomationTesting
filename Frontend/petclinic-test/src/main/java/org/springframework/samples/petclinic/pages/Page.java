@@ -1,9 +1,8 @@
 package org.springframework.samples.petclinic.pages;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,14 +10,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import static org.openqa.selenium.By.*;
+
 public abstract class Page {
 
-    protected final WebDriver driver;
-    private String title;
+    protected WebDriver driver;
     private final String TITLE_TAG = "h2";
+    private String title;
 
-    protected Page( String title) {
-        this.driver = new ChromeDriver();
+    protected Page( String title , WebDriver driver) {
+        this.driver = driver;
         this.title = title;
     }
 
@@ -33,7 +34,7 @@ public abstract class Page {
         return url.equals(driver.getCurrentUrl());
     }
     public boolean isCurrent() {
-        return title.equals(driver.findElement(By.tagName(TITLE_TAG)).getText());
+        return title.equals(driver.findElement(tagName(TITLE_TAG)).getText());
     }
 
     protected void goTo(String url) {
@@ -41,11 +42,11 @@ public abstract class Page {
     }
 
     protected void cssClick(String path) {
-        driver.findElement(By.cssSelector(path)).click();
+        driver.findElement(cssSelector(path)).click();
     }
 
     protected String getText(String cssPath) {
-        return driver.findElement(By.xpath(cssPath)).getText();
+        return driver.findElement(xpath(cssPath)).getText();
     }
 
     protected void fill(String id, String value) {
@@ -53,20 +54,35 @@ public abstract class Page {
         element.clear();
         element.sendKeys(value);
     }
+    protected void cssFill(String cssPath, String value) {
+        final WebElement element = cssWaitFor(cssPath);
+        element.clear();
+        element.sendKeys(value);
+    }
+
+    protected void clearField(String cssPath) {
+        driver.findElement(cssSelector(cssPath)).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+    }
 
     protected void selectFirst(String id) {
 
-        new Select(driver.findElement(By.id(id))).selectByIndex(1);
+        new Select(driver.findElement(id(id))).selectByIndex(1);
 
     }
-
-    protected List<WebElement> allTableElements(String xpath)
-    {
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-         List<WebElement> tableElements = driver.findElements(By.xpath(xpath));
-         return tableElements;
+    protected void select(String id, int i) {
+        new Select(driver.findElement(id(id))).selectByIndex(i - 1);
     }
 
+//    protected List<WebElement> allTableElements(String xpath)
+//    {
+//        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+//         List<WebElement> tableElements = driver.findElements(xpath(xpath));
+//         return tableElements;
+//    }
+    protected List<WebElement> getElements(String xPath) {
+    implicitlyWait(1);
+    return driver.findElements(xpath(xPath));
+}
 
 
 
@@ -79,25 +95,31 @@ public abstract class Page {
     }
 
     private WebElement waitFor(String id, int waitInterval) {
-        return (new WebDriverWait(driver, waitInterval)).until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
+        return (new WebDriverWait(driver, waitInterval)).until(ExpectedConditions.presenceOfElementLocated(id(id)));
+    }
+
+    private WebElement cssWaitFor(String cssPath) {
+        return cssWaitFor(cssPath, 5);
+    }
+
+    private WebElement cssWaitFor(String cssPath, int waitInterval) {
+        return (new WebDriverWait(driver, waitInterval)).until(ExpectedConditions.presenceOfElementLocated(cssSelector(cssPath)));
+    }
+    protected void implicitlyWait(int sec) {
+        driver.manage().timeouts().implicitlyWait(sec, TimeUnit.SECONDS);
     }
 
     protected boolean exists(String id) {
-        return driver.findElement(By.id(id)) != null;
-    }
-
-    public boolean isNotRedirected(String url)
-    {
-
-        return url.equals(driver.getCurrentUrl());
+        return driver.findElement(id(id)) != null;
     }
 
     protected void refresh(){
         driver.navigate().refresh();
     }
-    public boolean isErrorShowing(String className,String errorMsg)
+
+    protected boolean isErrorShowing(String className,String errorMsg)
     {
-        return errorMsg.equals(driver.findElement(By.className(className)).getText());
+        return errorMsg.equals(driver.findElement(className(className)).getText());
     }
 
 
