@@ -29,7 +29,9 @@ public abstract class Page {
         driver.quit();
     }
 
-
+    public boolean isCurrentUrl(String url) {
+        return url.equals(driver.getCurrentUrl());
+    }
     public boolean isCurrent() {
         return title.equals(driver.findElement(By.tagName(TITLE_TAG)).getText());
     }
