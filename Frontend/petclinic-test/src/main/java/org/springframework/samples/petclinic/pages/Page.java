@@ -8,33 +8,36 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import static org.openqa.selenium.By.tagName;
 
 public abstract class Page {
 
-    protected final WebDriver driver;
+    private static final WebDriver driver = new ChromeDriver();
     private String title;
-    private String pageHeaderXpath;
+    private final String TITLE_TAG = "h2";
 
-    protected Page( String title, String pageHeaderXpath) {
-        this.driver = new ChromeDriver();
+    protected Page(String title) {
         this.title = title;
-        this.pageHeaderXpath = pageHeaderXpath;
     }
 
-    public void closeBrowser()
-    {
-        driver.close();
-        driver.quit();
+    public boolean isCurrentUrl(String Url) {
+        return Url.equals(driver.getCurrentUrl());
     }
-
 
     public boolean isCurrent() {
-        return title.equals(driver.findElement(By.xpath(pageHeaderXpath)).getText());
+        return title.equals(driver.findElement(tagName(TITLE_TAG)));
+
     }
 
-
-
+    protected List<WebElement> allTableElements(String xpath)
+    {
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        List<WebElement> tableElements = driver.findElements(By.xpath(xpath));
+        return tableElements;
+    }
     protected void goTo(String url) {
         driver.get(url);
     }
@@ -54,12 +57,8 @@ public abstract class Page {
     }
 
     protected void selectFirst(String id) {
-
         new Select(driver.findElement(By.id(id))).selectByIndex(1);
-
     }
-
-
 
     protected void click(String id) {
         waitFor(id).click();
@@ -76,15 +75,34 @@ public abstract class Page {
     protected boolean exists(String id) {
         return driver.findElement(By.id(id)) != null;
     }
+    protected boolean cssExists(String xPath) {
+        if (driver.findElement(By.xpath(xPath)).getText() != null)
+            return true;
+        else
+            return false;
+    }
+
+
+    protected void cssFill(String cssPath, String value) {
+        final WebElement element = cssWaitFor(cssPath);
+        element.clear();
+        element.sendKeys(value);
+    }
+
+    protected void implicitlyWait(int sec){
+        driver.manage().timeouts().implicitlyWait(sec, TimeUnit.SECONDS) ;
+    }
+    private WebElement cssWaitFor(String cssPath) {
+        return cssWaitFor(cssPath, 5);
+    }
+
+    private WebElement cssWaitFor(String cssPath, int waitInterval) {
+        return (new WebDriverWait(driver, waitInterval)).until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(cssPath)));
+    }
 
     public boolean isNotRedirected(String url)
     {
         return url.equals(driver.getCurrentUrl());
     }
-    public boolean isErrorShowing(String className,String errorMsg)
-    {
-        return errorMsg.equals(driver.findElement(By.className(className)).getText());
-    }
-
 
 }
