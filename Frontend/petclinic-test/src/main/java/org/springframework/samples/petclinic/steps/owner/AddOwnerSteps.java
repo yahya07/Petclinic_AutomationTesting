@@ -24,7 +24,8 @@ public class AddOwnerSteps {
         System.setProperty("webdriver.chrome.silentOutput", "true");
         getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
     }
-    private  AddOwnerPage addOwnerPage = new AddOwnerPage();
+    private  AddOwnerPage addOwnerPage;
+    //= new AddOwnerPage();
 
     //private AllOwnersPage allOwnersPage;
 

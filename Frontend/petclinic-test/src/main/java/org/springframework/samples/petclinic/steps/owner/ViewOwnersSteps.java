@@ -26,23 +26,24 @@ public class ViewOwnersSteps {
         getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
     }
     private HomePage homePage = new HomePage();
-private AllOwnersPage allOwnersPage= new AllOwnersPage();
+private AllOwnersPage allOwnersPage;
+        //= new AllOwnersPage();
     @Given("I am on the home page")
     public void iAmOnTheHomePage() {
 
         System.out.println("wibble iAmOnTheHomePage");
         assertTrue(homePage.isCurrent());
     }
-    @When("I click on Owners tab")
+    @When("I click on OWNERS tab")
     public void iClickOnOwnersTab() {
         homePage.clickOwners();
         //.navigateFromHomePage();
 
         // assertTrue(allOwnersPage.isCurrentByHeader());
     }
-    @And("I click on all")
+    @And("I click on ALL")
     public void iClickOnAll() {
-        homePage.clickAllOwners();
+        allOwnersPage=homePage.clickAllOwners();
     }
     @Then("I will be directed to AllOwners page")
     public void iWillBeDirectedToAllOwnersPage() {

@@ -13,13 +13,13 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class Page {
 
-    protected static final WebDriver driver=new ChromeDriver();
+    protected WebDriver driver;
     //= new ChromeDriver();;
     private String title;
     private String TITLE_TAG="h2";
 
-    protected Page(String title) {
-      //  this.driver = new ChromeDriver();
+    protected Page(WebDriver driver,String title) {
+      this.driver = driver;
 
         this.title = title;
     }

@@ -18,7 +18,8 @@ public class ViewOwnerSteps {
         getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
     }
     //private HomePage homePage = new HomePage();
-    private AllOwnersPage allOwnersPage= new AllOwnersPage();
+    private AllOwnersPage allOwnersPage;
+    //= new AllOwnersPage();
     @Given("I am on all owners page")
     public void iAmOnTheAllOwnerPage() {
 

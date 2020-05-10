@@ -1,11 +1,13 @@
 package org.springframework.samples.petclinic.pages;
 
+import org.openqa.selenium.chrome.ChromeDriver;
+
 public class HomePage extends Page {
     private static final String OWNER_TAB_SELECTOR="OWNERS";
     private static final String ALL_OWNERS_TAB_SELECTOR="ALL";
 
     public HomePage(){
-super("Welcome");
+super(new ChromeDriver(),"Welcome");
 goTo("http://localhost:8081/petclinic/");
     }
     public void clickOwners()
@@ -13,9 +15,10 @@ goTo("http://localhost:8081/petclinic/");
         linkTextClick(OWNER_TAB_SELECTOR);
     }
 
-    public void clickAllOwners()
+    public AllOwnersPage clickAllOwners()
     {
         linkTextClick(ALL_OWNERS_TAB_SELECTOR);
+        return new AllOwnersPage(super.driver);
     }
     
 }

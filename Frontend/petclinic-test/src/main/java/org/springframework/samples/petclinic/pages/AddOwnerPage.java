@@ -32,8 +32,8 @@ public class AddOwnerPage extends Page {
     public static final String URL="http://localhost:8081/petclinic/owners/add";
     public static final String ALL_OWNERS_TABLE="/html/body/app-root/app-owner-list/div/div/div/table/tbody/tr/td[1]";
 
-    public AddOwnerPage() {
-        super("New Owner");
+    public AddOwnerPage(WebDriver driver) {
+        super(driver,"New Owner");
         goTo(URL);
     }
 
