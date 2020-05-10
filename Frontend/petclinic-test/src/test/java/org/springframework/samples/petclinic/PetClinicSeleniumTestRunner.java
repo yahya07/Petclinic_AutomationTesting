@@ -13,7 +13,7 @@ import static java.util.logging.Logger.getLogger;
         strict = true,
         snippets = CAMELCASE,
         tags = "not @wip",
-        features = "src/test/resources")
+        features = "src/test/resources/owner/AddOwner.feature")
 public class PetClinicSeleniumTestRunner {
 
     static {
