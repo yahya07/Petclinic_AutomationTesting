@@ -15,12 +15,13 @@ import static org.openqa.selenium.By.tagName;
 
 public abstract class Page {
 
-    private static final WebDriver driver = new ChromeDriver();
+    protected   WebDriver driver;
     private String title;
     private final String TITLE_TAG = "h2";
 
-    protected Page(String title) {
+    protected Page(String title, WebDriver driver) {
         this.title = title;
+        this.driver = driver;
     }
 
     public boolean isCurrentUrl(String Url) {

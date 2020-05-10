@@ -3,6 +3,7 @@ package org.springframework.samples.petclinic.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.Iterator;
 import java.util.List;
@@ -27,7 +28,7 @@ public class AddVetPage extends Page {
     private static final String NUMSYMCOMB = NUM_SYM_1 + " "+ NUM_SYM_2;
 
     public AddVetPage() {
-        super(TITLE, HEADER_XPATH);
+        super(TITLE, new ChromeDriver());
     }
 
     public void navigateToAddVet() {
@@ -73,10 +74,10 @@ public class AddVetPage extends Page {
         return NUMSYMCOMB.equals(tableElements.get(tableElements.size()-1).getText());
     }
 
-    public boolean isTwoCharErrorShowing()
-    {
-        return isErrorShowing(ERROR_CLASS,TWO_CHARS_ERROR);
-    }
+//    public boolean isTwoCharErrorShowing()
+//    {
+//        return isErrorShowing(ERROR_CLASS,TWO_CHARS_ERROR);
+//    }
 public boolean pageNotRedirected(){
 
         return isNotRedirected(URL);

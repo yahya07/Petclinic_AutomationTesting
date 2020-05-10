@@ -1,10 +1,12 @@
 package org.springframework.samples.petclinic.pages;
 
+import org.openqa.selenium.chrome.ChromeDriver;
+
 public class OwnerInformationPage extends Page {
     private static final String URL ="http://localhost:8081/petclinic/owners/100";
 
     public OwnerInformationPage() {
-        super("Owner Information");
+        super("Owner Information", new ChromeDriver());
     }
 
 

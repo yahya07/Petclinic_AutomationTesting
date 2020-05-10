@@ -1,4 +1,7 @@
-package org.springframework.samples.petclinic.pages;
+package org.springframework.samples.petclinic.pages.visit;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.samples.petclinic.pages.Page;
 
 public class AddVisitPage extends Page {
 
@@ -12,7 +15,7 @@ public class AddVisitPage extends Page {
     private static final String INVALID_DESCRIPTION_VALUE  = "$%^&**(&%%$";
 
     public AddVisitPage() {
-        super("New Visit");
+        super("New Visit", new ChromeDriver());
     }
 
     public void goToAddVisitForm() {
@@ -34,6 +37,7 @@ public class AddVisitPage extends Page {
     }
 
     public boolean visitAddedSuccessfully() {
+        implicitlyWait(10);
         return VALID_DESCRIPTION_VALUE.equals(getText("/html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list[1]/table/tr/td[2]/app-visit-list/table/tr[1]/td[2]"));
     }
     public boolean isOnSamePage(){
