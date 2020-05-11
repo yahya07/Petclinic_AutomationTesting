@@ -1,9 +1,13 @@
 package org.springframework.samples.petclinic.pages;
 
 import io.cucumber.java.After;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.samples.petclinic.pages.vet.AddVetPage;
 import org.springframework.samples.petclinic.pages.vet.AllVetsPage;
+
+import java.util.concurrent.TimeUnit;
 
 public class HomePage extends Page {
 
@@ -19,8 +23,10 @@ public class HomePage extends Page {
     private static final String PATH_SPECIALTIES = "body > app-root > div.container-fluid > nav > div > ul > li:nth-child(5) > a";
 
 
+
+
     public HomePage() {
-        super("Welcome", new ChromeDriver());
+        super("Welcome",new ChromeDriver());
         goToHome();
     }
 

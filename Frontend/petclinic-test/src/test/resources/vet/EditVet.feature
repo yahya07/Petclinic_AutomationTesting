@@ -5,7 +5,7 @@ Feature: Edit an existing Vet
 
   Scenario: Successfully editing a Vet
     Given I am navigated to the All Veterinarian page
-    When   I click edit button the for the first vet
+    When  I click edit button the for the first vet
     And   I enter valid data
     Then  The edited vet will be displayed at the end of the vets's list
 
@@ -24,7 +24,7 @@ Feature: Edit an existing Vet
 
   Scenario: Unsuccessfully edit a Vet to be blank
     Given I am navigated to the All Veterinarian page
-    When   I click edit button the for the first vet
+    When  I click edit button the for the first vet
     And   I clear all data
     But   two errors show up
     Then  save button is disabled
