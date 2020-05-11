@@ -1,5 +1,6 @@
 package org.springframework.samples.petclinic.pages;
 
+import io.cucumber.java.After;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.samples.petclinic.pages.vet.AddVetPage;
 import org.springframework.samples.petclinic.pages.vet.AllVetsPage;
@@ -54,6 +55,7 @@ public class HomePage extends Page {
         cssClick(PATH_VETS);
         return new AllVetsPage(driver);
     }
+
 
 //    public PetTypesPage goToPetTypes(){
 //        cssClick(PATH_PET_TYPES);

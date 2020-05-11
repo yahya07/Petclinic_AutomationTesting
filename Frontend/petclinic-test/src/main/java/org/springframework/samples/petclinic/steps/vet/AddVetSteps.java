@@ -35,14 +35,14 @@ public class AddVetSteps {
 
     @When("I enter valid vet data with choosing type")
     public void iEnterValidVetDataWithChoosingType() {
-        addVet.fillValid(fname, lname);
+        addVet.fillData(fname, lname);
         addVet.chooseType();
     }
 
     @Then("The new vet will be displayed at the end of the vets's list")
     public void theNewVetWillBeDisplayedAtTheEndOfTheVetsSList() {
         allVets = addVet.saveAndRedirect();
-        assertTrue(allVets.isAdded(fullName));
+        assertTrue(allVets.exists(fullName));
         allVets.closeBrowser();
     }
 
@@ -50,7 +50,7 @@ public class AddVetSteps {
     //Scenario: Successfully add a Vet without choosing type
     @When("I enter valid vet data without choosing type")
     public void iEnterValidVetDataWithoutChoosingType() {
-        addVet.fillValid(fname,lname);
+        addVet.fillData(fname,lname);
     }
 
     //   Scenario: Unsuccessfully add a Vet
@@ -69,7 +69,7 @@ public class AddVetSteps {
     //  Scenario: Short data
     @When("I enter a single character in both fields")
     public void iEnterASingleCharacterInBothFields() {
-        addVet.fillOneChar(char1,char2);
+        addVet.fillData(char1,char2);
     }
     @Then("I see error message specifying at least two chars long")
     public void iSeeErrorMessageSpecifyingAtLeastTwoCharsLong() {
@@ -81,25 +81,25 @@ public class AddVetSteps {
     // Scenario: Submit Short data
     @When("I enter one character in both fields")
     public void iEnterOneCharacterInBothFields() {
-        addVet.fillOneChar(char1,char2);
+        addVet.fillData(char1,char2);
     }
 
     @Then("The new short vet will be displayed at the end of the vets's list")
     public void theNewShortVetWillBeDisplayedAtTheEndOfTheVetsSList() {
         allVets = addVet.saveAndRedirect();
-        assertTrue(allVets.isAdded(shortComb));
+        assertTrue(allVets.exists(shortComb));
         allVets.closeBrowser();
     }
 
     //   Scenario: Create Vet with symbols and numbers in fields
     @When("I enter symbols and numbers rather in fields")
     public void iEnterSymbolsAndNumbersRatherInFields() {
-        addVet.fillNumericAndSymbols(numsym1,numsym2);
+        addVet.fillData(numsym1,numsym2);
     }
     @Then("The new numeric vet will be displayed at the end of the vets's list")
     public void theNewNumericVetWillBeDisplayedAtTheEndOfTheVetsSList() {
         allVets = addVet.saveAndRedirect();
-        assertTrue(allVets.isAdded(numsymComb));
+        assertTrue(allVets.exists(numsymComb));
         allVets.closeBrowser();
     }
 }

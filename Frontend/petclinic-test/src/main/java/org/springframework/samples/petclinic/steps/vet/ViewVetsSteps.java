@@ -31,4 +31,6 @@ public class ViewVetsSteps {
         assertTrue(allVets.isCurrent());
         allVets.closeBrowser();
     }
+
+
 }

@@ -18,19 +18,11 @@ public class AddVetPage extends Page {
     }
 
 
-    public void fillValid(String fname, String lname) {
+    public void fillData(String fname, String lname) {
         fill("firstName", fname);
         fill("lastName", lname);
     }
-    public void fillNumericAndSymbols(String numsym1, String numsym2) {
-        fill("firstName", numsym1);
-        fill("lastName", numsym2);
-    }
 
-    public void fillOneChar(String char1, String char2) {
-        fill("firstName",char1);
-        fill("lastName", char2);
-    }
     public void chooseType()
     {
         selectFirst("specialties");

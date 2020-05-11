@@ -1,9 +1,9 @@
 package org.springframework.samples.petclinic.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -11,16 +11,21 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.openqa.selenium.By.*;
+import static org.openqa.selenium.Keys.chord;
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
+
 
 public abstract class Page {
 
     protected WebDriver driver;
     private final String TITLE_TAG = "h2";
     private final String title;
+    private WebDriverWait wait;
 
 
     protected Page(String title, WebDriver driver) {
         this.driver = driver;
+        wait = new WebDriverWait(driver, 10);
         this.title = title;
     }
 
@@ -33,10 +38,13 @@ public abstract class Page {
         return url.equals(driver.getCurrentUrl());
     }
 
+    public boolean isElementEnabled(String cssPath) {
+        return driver.findElement(cssSelector(cssPath)).isEnabled();
+
+    }
 
     public boolean isCurrent() {
-        implicitlyWait(5);
-        return title.equals(driver.findElement(tagName(TITLE_TAG)).getText());
+        return title.equals(waitFor(tagName(TITLE_TAG)));
     }
 
     protected void goTo(String url) {
@@ -65,7 +73,7 @@ public abstract class Page {
     }
 
     protected void clearField(String cssPath) {
-        driver.findElement(cssSelector(cssPath)).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
+        driver.findElement(cssSelector(cssPath)).sendKeys(chord(Keys.CONTROL, "a", Keys.DELETE));
     }
 
     protected void selectFirst(String id) {
@@ -78,7 +86,7 @@ public abstract class Page {
     }
 
     protected List<WebElement> getElements(String xPath) {
-        implicitlyWait(2);
+        implicitlyWait(10);
         return driver.findElements(xpath(xPath));
     }
 
@@ -90,16 +98,29 @@ public abstract class Page {
         return waitFor(id, 5);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private WebElement waitFor(String id, int waitInterval) {
-        return (new WebDriverWait(driver, waitInterval)).until(ExpectedConditions.presenceOfElementLocated(id(id)));
+        return wait.until(visibilityOfElementLocated(id(id)));
     }
+
+    private String waitFor(By by) {
+
+        String title = null;
+
+        do {
+            try {
+                title = wait.until(presenceOfElementLocated(by)).getText();
+            } catch (Exception e) {
+                // ignore
+            }
+        } while (title == null);
+
+        return title;
+    }
+
 
     private WebElement cssWaitFor(String cssPath) {
-        return cssWaitFor(cssPath, 5);
-    }
-
-    private WebElement cssWaitFor(String cssPath, int waitInterval) {
-        return (new WebDriverWait(driver, waitInterval)).until(ExpectedConditions.presenceOfElementLocated(cssSelector(cssPath)));
+        return wait.until(presenceOfElementLocated(cssSelector(cssPath)));
     }
 
     protected void implicitlyWait(int sec) {
@@ -114,9 +135,8 @@ public abstract class Page {
         driver.navigate().refresh();
     }
 
-    public boolean isErrorShowing(String className,String errorMsg)
-    {
-        return errorMsg.equals(driver.findElement(className(className)).getText());
+    public boolean isErrorShowing(String className, String errorMsg) {
+        return errorMsg.equals(driver.findElement(By.className(className)).getText());
     }
 
 

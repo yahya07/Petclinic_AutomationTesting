@@ -2,8 +2,12 @@ package org.springframework.samples.petclinic.pages.vet;
 
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.json.JsonOutput;
 import org.springframework.samples.petclinic.pages.Page;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class AllVetsPage extends Page {
 
@@ -19,11 +23,13 @@ public class AllVetsPage extends Page {
         super("Veterinarians",driver);
     }
 
-    public boolean isAdded(String string) {
-        return string.equals(getElements(ALL_VETS_TABLET).get(getElements(ALL_VETS_TABLET).size()-1).getText());
-    }
-    public boolean isEdited(String string) {
-        return string.equals(getElements(ALL_VETS_TABLET).get(getElements(ALL_VETS_TABLET).size()-1).getText());
+
+    public boolean exists(String str) {
+        List<WebElement> table_elements = getElements(ALL_VETS_TABLET);
+        List<String> names = table_elements.stream()
+                .map(name -> name.getText())
+                .collect(Collectors.toList());
+        return names.contains(str);
     }
 
     public void getCurrentRowsCount()
@@ -31,22 +37,16 @@ public class AllVetsPage extends Page {
         allRowsCount = getElements(ALL_VETS_TABLET).size();
     }
 
-    public void refresh()
-    {
-        refresh();
-    }
 
 
 
-    public void deleteFirst()
-    {
+    public void deleteFirst()  {
         cssClick(DELETE_BUTTON);
         refresh();
         remainingRowsCount = getElements(ALL_VETS_TABLET).size();
     }
 
-    public EditVetPage editFirst()
-    {
+    public EditVetPage editFirst() {
         cssClick(EDIT_BUTTON);
         return new EditVetPage(driver);
     }
