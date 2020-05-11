@@ -41,6 +41,7 @@ public class AddPetSteps {
     @Then("The new pet will be displayed at the owner information page")
     public void theNewPetWillBeDisplayedAtTheOwnerInformationPage() {
         assertTrue(ownerInformationPage.petNames().contains(name));
+        ownerInformationPage.closeBrowser();
     }
 
     @And("I leave all the fields empty")
@@ -64,6 +65,7 @@ public class AddPetSteps {
     @Then("I remain in the add pet page")
     public void iRemainInTheAddPetPage() {
         assertTrue(addPetPage.isCurrent());
+        addPetPage.closeBrowser();
     }
 
 }

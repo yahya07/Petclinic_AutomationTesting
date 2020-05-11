@@ -33,5 +33,6 @@ public class RemovePetSteps {
     @Then("The pet disappear from the pets table")
     public void thePetDisappearFromThePetsTable() {
         assertEquals(1, lengthDifference);
+        ownerInformationPage.closeBrowser();
     }
 }
