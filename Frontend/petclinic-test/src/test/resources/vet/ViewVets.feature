@@ -5,6 +5,5 @@ Feature: View All Vets
 
   Scenario: Successfully view all Vets
     Given I am on the homepage
-    When  I click on Veterinarians tab
-    And   I click on all
+    When  I click on All Veterinarians tab
     Then  page is redirected and im on all vets page

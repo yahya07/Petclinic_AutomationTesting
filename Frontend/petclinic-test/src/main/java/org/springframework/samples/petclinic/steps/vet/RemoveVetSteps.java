@@ -11,13 +11,14 @@ public class RemoveVetSteps {
     private HomePage homePage = new HomePage();
     private AllVetsPage allVets;
 
+
+
     @Given("I am on the All Veterinarian page")
     public void iAmOnTheAllVeterinarianPage() {
         allVets = homePage.goToVetsList();
-        allVets.getCurrentRowsCOunt();
+        allVets.getCurrentRowsCount();
         assertTrue(allVets.isCurrent());
     }
-
     @When("I click on delete button next to any vet")
     public void iClickOnDeleteButtonNextToAnyVet() {
         allVets.deleteFirst();

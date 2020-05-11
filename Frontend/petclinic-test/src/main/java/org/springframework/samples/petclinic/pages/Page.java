@@ -35,6 +35,7 @@ public abstract class Page {
 
 
     public boolean isCurrent() {
+        implicitlyWait(5);
         return title.equals(driver.findElement(tagName(TITLE_TAG)).getText());
     }
 

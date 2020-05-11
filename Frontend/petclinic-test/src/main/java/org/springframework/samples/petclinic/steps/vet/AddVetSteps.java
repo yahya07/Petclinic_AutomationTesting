@@ -1,10 +1,8 @@
 package org.springframework.samples.petclinic.steps.vet;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.samples.petclinic.pages.HomePage;
 import org.springframework.samples.petclinic.pages.vet.AddVetPage;
 import org.springframework.samples.petclinic.pages.vet.AllVetsPage;
@@ -89,7 +87,7 @@ public class AddVetSteps {
     @Then("The new short vet will be displayed at the end of the vets's list")
     public void theNewShortVetWillBeDisplayedAtTheEndOfTheVetsSList() {
         allVets = addVet.saveAndRedirect();
-        assertTrue(allVets.isShortAdded(shortComb));
+        assertTrue(allVets.isAdded(shortComb));
         allVets.closeBrowser();
     }
 
@@ -101,7 +99,7 @@ public class AddVetSteps {
     @Then("The new numeric vet will be displayed at the end of the vets's list")
     public void theNewNumericVetWillBeDisplayedAtTheEndOfTheVetsSList() {
         allVets = addVet.saveAndRedirect();
-        assertTrue(allVets.isNumericSymbolsAdded(numsymComb));
+        assertTrue(allVets.isAdded(numsymComb));
         allVets.closeBrowser();
     }
 }
