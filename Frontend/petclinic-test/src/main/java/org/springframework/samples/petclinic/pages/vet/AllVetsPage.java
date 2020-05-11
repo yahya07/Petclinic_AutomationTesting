@@ -17,9 +17,19 @@ public class AllVetsPage extends Page {
         super("Veterinarians",driver);
     }
 
-    public void navigateToAllPets() {
-        goTo(URL);
-        allRowsCount =getElements(ALL_VETS_TABLET).size();
+    public boolean isAdded(String fullName) {
+        return fullName.equals(getElements(ALL_VETS_TABLET).get(getElements(ALL_VETS_TABLET).size()-1).getText());
+    }
+    public boolean isShortAdded(String shortComb) {
+        return shortComb.equals(getElements(ALL_VETS_TABLET).get(getElements(ALL_VETS_TABLET).size()-1).getText());    }
+
+    public boolean isNumericSymbolsAdded(String numsymComb) {
+        return numsymComb.equals(getElements(ALL_VETS_TABLET).get(getElements(ALL_VETS_TABLET).size()-1).getText());
+    }
+
+    public void getCurrentRowsCOunt()
+    {
+        allRowsCount = getElements(ALL_VETS_TABLET).size();
     }
 
 

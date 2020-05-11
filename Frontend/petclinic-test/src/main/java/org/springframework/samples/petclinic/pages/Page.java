@@ -77,7 +77,7 @@ public abstract class Page {
     }
 
     protected List<WebElement> getElements(String xPath) {
-        implicitlyWait(1);
+        implicitlyWait(2);
         return driver.findElements(xpath(xPath));
     }
 

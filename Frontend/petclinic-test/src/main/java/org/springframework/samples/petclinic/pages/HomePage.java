@@ -1,6 +1,8 @@
 package org.springframework.samples.petclinic.pages;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.samples.petclinic.pages.vet.AddVetPage;
+import org.springframework.samples.petclinic.pages.vet.AllVetsPage;
 
 public class HomePage extends Page {
 
@@ -40,29 +42,29 @@ public class HomePage extends Page {
         return new AllOwnersPage(driver);
     }
 
-    /*
+
     public AddVetPage goToAddVet(){
         cssClick(PATH_VETS_DROPDOWN);
         cssClick(PATH_ADD_VET);
-        return new AddVetPage();
+        return new AddVetPage(driver);
     }
 
     public AllVetsPage goToVetsList(){
         cssClick(PATH_VETS_DROPDOWN);
         cssClick(PATH_VETS);
-        return new AllVetsPage();
+        return new AllVetsPage(driver);
     }
 
-    public PetTypesPage goToPetTypes(){
-        cssClick(PATH_PET_TYPES);
-        return new PetTypesPage();
-    }
+//    public PetTypesPage goToPetTypes(){
+//        cssClick(PATH_PET_TYPES);
+//        return new PetTypesPage();
+//    }
+//
+//    public Specialties goToSpecialties(){
+//        cssClick(PATH_SPECIALTIES);
+//        return new Specialties();
+//    }
 
-    public Specialties goToSpecialties(){
-        cssClick(PATH_SPECIALTIES);
-        return new Specialties();
-    }
-*/
 
 
 }

@@ -1,6 +1,7 @@
 package org.springframework.samples.petclinic.steps.pet;
 
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -22,8 +23,7 @@ public class AddPetSteps {
     private String name = "Test";
     private String birthDate = "2020/04/13";
     private int index = 2;
-
-
+     
     @Given("I am on the add-pet form")
     public void iAmOnTheAddPetForm() {
         allOwnersPage = homePage.goToOwnersList();
