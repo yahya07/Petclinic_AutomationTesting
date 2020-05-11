@@ -5,6 +5,5 @@ Feature: Delete PetTypes
 
   Scenario: Successfully Delete Pet Type
     Given I am on the Pet Type form
-    And   Choose specific Pet Type
     When  I Click Delete button
     Then  The specific PetType will be disappear from the end of the Pet Type's list

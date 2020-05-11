@@ -3,8 +3,12 @@ package org.springframework.samples.petclinic.steps.pettypes;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.springframework.samples.petclinic.pages.HomePage;
+import org.springframework.samples.petclinic.pages.petTypesPage.EditPetTypePage;
 
 public class EditPetTypesSteps {
+    private HomePage homePage = new HomePage();
+
     @And("I Click Edit button")
     public void iClickEditButton() {
     }

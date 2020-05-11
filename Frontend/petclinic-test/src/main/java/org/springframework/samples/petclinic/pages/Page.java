@@ -22,6 +22,12 @@ public abstract class Page {
     protected Page(String title) {
         this.title = title;
     }
+    protected List<WebElement> allTableElements(String xpath)
+    {
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        List<WebElement> tableElements = driver.findElements(By.xpath(xpath));
+        return tableElements;
+    }
 
 
     public boolean isCurrent() {
