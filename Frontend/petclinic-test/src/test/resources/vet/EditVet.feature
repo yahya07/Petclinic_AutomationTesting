@@ -29,4 +29,10 @@ Feature: Edit an existing Vet
     But   two errors show up
     Then  save button is disabled
 
+  Scenario: Successfully click back button from edit form
+    Given I am navigated to the All Veterinarian page
+    When  I click edit button the for the first vet
+    And   I click back button in edit vet form
+    Then  I am back again in All vets page
+
 
