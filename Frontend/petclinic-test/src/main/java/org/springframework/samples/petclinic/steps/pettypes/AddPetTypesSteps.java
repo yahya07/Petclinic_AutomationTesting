@@ -5,58 +5,59 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.samples.petclinic.pages.HomePage;
-import org.springframework.samples.petclinic.pages.petTypesPage.petTypePage;
+import org.springframework.samples.petclinic.pages.petTypesPage.PetTypesPage;
 import static org.junit.Assert.assertTrue;
 
 public class AddPetTypesSteps {
 
         private HomePage homePage = new HomePage();
-        private petTypePage petTypePage = new petTypePage();
+        private PetTypesPage petTypesPage;
 
 
         @Given("I am on the Pet Type form")
         public void iAmOnThePetTypeForm() {
-            homePage.navigateHomePage();
-            petTypePage.gotoPetTypesPage();
-            assertTrue(petTypePage.isCurrent());
+            petTypesPage =  homePage.goToPetTypes();
+            assertTrue(petTypesPage.isCurrent());
 
         }
 
         @When("I Clinic add button")
         public void iClinicAddButton() {
-            petTypePage.clickAddButton();
+            petTypesPage.clickAddButton();
         }
 
         @And("I Enter Valid Pet Type name")
         public void iEnterValidPetTypeName() {
-            petTypePage.fillAddFiled("Dog");
-            petTypePage.clickSaveButton();
+            petTypesPage.fillAddFiled("Dog");
+            petTypesPage.clickSaveButton();
         }
 
         @Then("The new Pet Type will be displayed at the end of the Pet Type's list")
         public void theNewPetTypeWillBeDisplayedAtTheEndOfThePetTypeSList() {
-            assertTrue(petTypePage.chickAdd());
+            assertTrue(petTypesPage.chickAdd());
+            petTypesPage.closeBrowser();
 
         }
 
 
         @And("I enter symbols and numbers rather than words data")
         public void iEnterSymbolsAndNumbersRatherThanWordsData() {
-            petTypePage.fillAddFiled("@#$568");
-            petTypePage.clickSaveButton();
+            petTypesPage.fillAddFiled("@#@%^&$568");
+            petTypesPage.clickSaveButton();
 
         }
 
         @And("I enter then remove value from the field")
         public void iEnterThenRemoveValueFromTheField() {
-            petTypePage.fillAddFiled("Cat");
-            petTypePage.removeText();
-            petTypePage.clickSaveButton();
+            petTypesPage.fillAddFiled("Cat");
+            petTypesPage.removeText();
+            petTypesPage.clickSaveButton();
 
         }
 
         @Then("The add button is give no action")
         public void theAddButtonIsGiveNoAction() {
-
+            petTypesPage.isCurrent("body > app-root > app-pettype-list > div > div > div:nth-child(3) > app-pettype-add > div > div > h2","New Pet Type");
+            petTypesPage.closeBrowser();
         }
 }
