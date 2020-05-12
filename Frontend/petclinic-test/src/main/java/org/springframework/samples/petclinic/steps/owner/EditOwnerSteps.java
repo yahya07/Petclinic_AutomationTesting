@@ -16,28 +16,21 @@ import static java.util.logging.Logger.getLogger;
 import static org.junit.Assert.assertTrue;
 
 public class EditOwnerSteps {
-    static {
-        System.setProperty("webdriver.chrome.driver", "/chromedriver.exe");
-        System.setProperty("webdriver.chrome.silentOutput", "true");
-        getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
-    }
 
     private HomePage homePage;
     private AllOwnersPage allOwnersPage;
     private OwnerInformationPage ownerInformationPage;
     private EditOwnerPage editOwnerPage;
 
-    @Before
-    public void setup() {
+
+
+    @Given("I am on the edit owner information form")
+    public void iAmOnTheEditOwnerInformationForm() {
         homePage = new HomePage();
         //homePage.clickOwners();
         allOwnersPage = homePage.goToOwnersList();
         ownerInformationPage = allOwnersPage.clickOnAnOwner();
         editOwnerPage = ownerInformationPage.clickEditOwner();
-    }
-
-    @Given("I am on the edit owner information form")
-    public void iAmOnTheEditOwnerInformationForm() {
         assertTrue(editOwnerPage.isCurrent());
     }
 
