@@ -6,7 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.samples.petclinic.pages.owner.AllOwnersPage;
 import org.springframework.samples.petclinic.pages.HomePage;
-import org.springframework.samples.petclinic.pages.OwnerInformationPage;
+import org.springframework.samples.petclinic.pages.owner.OwnerInformationPage;
 
 import java.util.logging.Level;
 

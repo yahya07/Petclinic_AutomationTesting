@@ -1,6 +1,8 @@
-package org.springframework.samples.petclinic.pages;
+package org.springframework.samples.petclinic.pages.owner;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.samples.petclinic.pages.Page;
 import org.springframework.samples.petclinic.pages.owner.EditOwnerPage;
 
 public class OwnerInformationPage extends Page {

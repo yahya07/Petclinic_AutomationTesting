@@ -1,6 +1,7 @@
 package org.springframework.samples.petclinic.pages;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.samples.petclinic.pages.owner.AddOwnerPage;
 import org.springframework.samples.petclinic.pages.owner.AllOwnersPage;
 
@@ -16,7 +17,7 @@ public class HomePage extends Page {
     private String pathAddOwner = "body > app-root > div.container-fluid > nav > div > ul > li.dropdown.open > ul > li:nth-child(2) > a";
 
     public HomePage(){
-super("Welcome", new ChromeDriver());
+super("Welcome", new ChromeDriver(new ChromeOptions().addArguments("--headless")));
 goToHome();
     }
 

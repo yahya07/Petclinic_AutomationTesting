@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import org.springframework.samples.petclinic.pages.*;
 import org.springframework.samples.petclinic.pages.owner.AllOwnersPage;
 import org.springframework.samples.petclinic.pages.owner.EditOwnerPage;
+import org.springframework.samples.petclinic.pages.owner.OwnerInformationPage;
 
 import java.util.logging.Level;
 
