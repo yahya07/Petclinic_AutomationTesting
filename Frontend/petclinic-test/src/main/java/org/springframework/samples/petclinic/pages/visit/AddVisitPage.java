@@ -1,6 +1,7 @@
 package org.springframework.samples.petclinic.pages.visit;
 
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
+import org.springframework.samples.petclinic.pages.OwnerInformationPage;
 import org.springframework.samples.petclinic.pages.Page;
 
 public class AddVisitPage extends Page {
@@ -14,8 +15,8 @@ public class AddVisitPage extends Page {
     private static final String VALID_DESCRIPTION_VALUE  = "Visit description has been written for add test.";
     private static final String INVALID_DESCRIPTION_VALUE  = "$%^&**(&%%$";
 
-    public AddVisitPage() {
-        super("New Visit", new ChromeDriver());
+    public AddVisitPage(WebDriver driver) {
+        super("New Visit",driver);
     }
 
     public void goToAddVisitForm() {
@@ -32,8 +33,9 @@ public class AddVisitPage extends Page {
         cssFill(DESCRIPTION_FILED_CSS, INVALID_DESCRIPTION_VALUE);
     }
 
-    public void submitVisitForm() {
+    public OwnerInformationPage submitVisitForm() {
         cssClick(SUBMIT_BUTTON_CSS);
+        return new OwnerInformationPage(driver);
     }
 
     public boolean visitAddedSuccessfully() {

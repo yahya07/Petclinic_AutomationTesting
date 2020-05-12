@@ -14,5 +14,10 @@ public class AllOwnersPage extends Page {
         return new OwnerInformationPage(driver);
     }
 
+    public OwnerInformationPage getSixthOwner(){
+        implicitlyWait(1);
+        cssClick("body > app-root > app-owner-list > div > div > div > table > tbody > tr:nth-child(6) > td.ownerFullName > a");
+        return new OwnerInformationPage(driver);
+    }
 
 }

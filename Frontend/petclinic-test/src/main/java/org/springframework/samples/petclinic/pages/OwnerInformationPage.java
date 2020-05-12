@@ -11,15 +11,10 @@ import java.util.stream.Collectors;
 public class OwnerInformationPage extends Page {
 
 
-    private static final String URL = "http://localhost:8081/petclinic/owners/1";
 
     public OwnerInformationPage(WebDriver driver) {
 
         super("Owner Information" , driver );
-    }
-
-    public void goToOwnerInformationPage() {
-        goTo(URL);
     }
 
 

@@ -19,4 +19,3 @@ Feature: Add a new visit
     And I enter invalid data
     And I submit the visit form
     Then I will remain on the same page
-    

@@ -5,19 +5,24 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.samples.petclinic.pages.visit.AddVisitPage;
+import org.springframework.samples.petclinic.pages.AllOwnersPage;
+import org.springframework.samples.petclinic.pages.HomePage;
 import org.springframework.samples.petclinic.pages.OwnerInformationPage;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class AddVisitSteps {
 
-    AddVisitPage addVisitPage = new AddVisitPage();
-    OwnerInformationPage ownerInformationPage = new OwnerInformationPage();
+    private HomePage homePage = new HomePage();
+    private AllOwnersPage allOwnersPage;
+    private OwnerInformationPage ownerInformationPage;
+    private AddVisitPage addVisitPage;
 
     @Given("I am on the add-visit form")
     public void iAmOnTheAddVisitForm() {
-        addVisitPage.goToAddVisitForm();
+        allOwnersPage = homePage.goToOwnersList();
+        ownerInformationPage = allOwnersPage.getSixthOwner();
+        addVisitPage = ownerInformationPage.addNewVisit();
         addVisitPage.isCurrent();
     }
 
@@ -28,7 +33,7 @@ public class AddVisitSteps {
 
     @And("I submit the visit form")
     public void iSubmitTheVisitForm() {
-        addVisitPage.submitVisitForm();
+        ownerInformationPage = addVisitPage.submitVisitForm();
     }
 
     @Then("A new visit should be added to the owner page")
@@ -36,19 +41,9 @@ public class AddVisitSteps {
         assertTrue(addVisitPage.visitAddedSuccessfully());
     }
 
-    @And("I enter invalid visit data")
+    @And("I enter invalid data")
     public void iEnterInvalidData() {
         addVisitPage.fillInValidVisitForm();
-    }
-
-    @Given("I am on the owner page")
-    public void iAmOnTheOwnerPage() {
-        ownerInformationPage.goTOwnerPage();
-    }
-
-    @Then("The add visit button is disabled")
-    public void theAddVisitButtonIsDisabled() {
-        assertFalse(ownerInformationPage.checkVisitButton());
     }
 
     @Then("I will remain on the same page")
@@ -59,6 +54,6 @@ public class AddVisitSteps {
 
     @And("I submit the visit form without filling any field")
     public void iSubmitTheVisitFormWithoutFillingAnyField() {
-        addVisitPage.submitVisitForm();
+        ownerInformationPage = addVisitPage.submitVisitForm();
     }
 }
