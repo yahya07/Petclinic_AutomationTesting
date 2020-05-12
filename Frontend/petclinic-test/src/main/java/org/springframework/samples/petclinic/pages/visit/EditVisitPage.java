@@ -18,7 +18,7 @@ public class EditVisitPage extends Page {
         implicitlyWait(10);
         clearField(DATE_FIELD_CSS);
         cssFill(DATE_FIELD_CSS,"2019-10-09");
-        cssFill(DESCRIPTION_FILED_CSS,"description has been updated here!");
+        cssFill(DESCRIPTION_FILED_CSS,"This will be deleted after update");
     }
 
     public OwnerInformationPage submitEditForm() {
