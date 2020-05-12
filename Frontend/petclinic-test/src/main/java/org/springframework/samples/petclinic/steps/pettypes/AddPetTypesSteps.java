@@ -29,7 +29,6 @@ public class AddPetTypesSteps {
         @And("I Enter Valid Pet Type name")
         public void iEnterValidPetTypeName() {
             petTypesPage.fillAddFiled("Dog");
-            petTypesPage.clickSaveButton();
         }
 
         @Then("The new Pet Type will be displayed at the end of the Pet Type's list")
@@ -43,7 +42,6 @@ public class AddPetTypesSteps {
         @And("I enter symbols and numbers rather than words data")
         public void iEnterSymbolsAndNumbersRatherThanWordsData() {
             petTypesPage.fillAddFiled("@#@%^&$568");
-            petTypesPage.clickSaveButton();
 
         }
 
@@ -51,7 +49,6 @@ public class AddPetTypesSteps {
         public void iEnterThenRemoveValueFromTheField() {
             petTypesPage.fillAddFiled("Cat");
             petTypesPage.removeText();
-            petTypesPage.clickSaveButton();
 
         }
 
@@ -60,4 +57,10 @@ public class AddPetTypesSteps {
             petTypesPage.isCurrent("body > app-root > app-pettype-list > div > div > div:nth-child(3) > app-pettype-add > div > div > h2","New Pet Type");
             petTypesPage.closeBrowser();
         }
+
+    @And("I submit the pet-type name")
+    public void iSubmitThePetTypeName() {
+        petTypesPage.clickSaveButton();
+
+    }
 }

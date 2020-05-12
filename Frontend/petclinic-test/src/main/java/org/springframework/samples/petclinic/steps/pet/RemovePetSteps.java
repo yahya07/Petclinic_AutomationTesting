@@ -3,9 +3,9 @@ package org.springframework.samples.petclinic.steps.pet;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.springframework.samples.petclinic.pages.AllOwnersPage;
 import org.springframework.samples.petclinic.pages.HomePage;
-import org.springframework.samples.petclinic.pages.OwnerInformationPage;
+import org.springframework.samples.petclinic.pages.owner.AllOwnersPage;
+import org.springframework.samples.petclinic.pages.owner.OwnerInformationPage;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

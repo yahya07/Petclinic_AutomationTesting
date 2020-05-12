@@ -15,11 +15,7 @@ import static java.util.logging.Logger.getLogger;
 import static org.junit.Assert.*;
 
 public class ViewOwnersSteps {
-    static {
-        System.setProperty("webdriver.chrome.driver", "/chromedriver.exe");
-        System.setProperty("webdriver.chrome.silentOutput", "true");
-        getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
-    }
+
 
     private HomePage homePage = new HomePage();
     private AllOwnersPage allOwnersPage;
