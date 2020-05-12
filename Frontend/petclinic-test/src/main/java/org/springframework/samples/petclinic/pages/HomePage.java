@@ -59,10 +59,10 @@ public class HomePage extends Page {
     }
 
 
-//    public PetTypesPage goToPetTypes(){
-//        cssClick(pathPetTypes);
-//        return new PetTypesPage(driver);
-//    }
+    public PetTypesPage goToPetTypes(){
+       cssClick(pathPetTypes);
+        return new PetTypesPage(driver);
+   }
 //
 //    public Specialties goToSpecialties(){
 //        cssClick(PATH_SPECIALTIES);
@@ -72,3 +72,4 @@ public class HomePage extends Page {
 
 
 }
+
