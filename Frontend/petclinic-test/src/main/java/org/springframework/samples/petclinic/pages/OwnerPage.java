@@ -1,12 +1,11 @@
 package org.springframework.samples.petclinic.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class OwnerPage extends Page{
 
     public OwnerPage(WebDriver driver) {
-        super(driver,"Owner Information");
+        super("Owner Information", driver);
        // goTo(URL);
     }
     public EditOwnerPage clickEditOwner(){

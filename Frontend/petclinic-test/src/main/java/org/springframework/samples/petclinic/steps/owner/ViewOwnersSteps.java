@@ -1,19 +1,14 @@
 package org.springframework.samples.petclinic.steps.owner;
 
-import io.cucumber.java.Before;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.springframework.samples.petclinic.pages.AddOwnerPage;
+
 import org.springframework.samples.petclinic.pages.AllOwnersPage;
 import org.springframework.samples.petclinic.pages.HomePage;
-//import pages.AddOwnerPage;
-//import pages.HomePage;
-//import pages.MyAccountPage;
-//import pages.RegistrationPage;
+
 
 import java.util.logging.Level;
 
@@ -26,9 +21,9 @@ public class ViewOwnersSteps {
         System.setProperty("webdriver.chrome.silentOutput", "true");
         getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
     }
+
     private HomePage homePage = new HomePage();
-private AllOwnersPage allOwnersPage;
-        //= new AllOwnersPage();
+    private AllOwnersPage allOwnersPage;
 
     @Given("I am on the home page")
     public void iAmOnTheHomePage() {
@@ -36,24 +31,24 @@ private AllOwnersPage allOwnersPage;
         System.out.println("wibble iAmOnTheHomePage");
         assertTrue(homePage.isCurrent());
     }
+
     @When("I click on OWNERS tab")
     public void iClickOnOwnersTab() {
         homePage.clickOwners();
-        //.navigateFromHomePage();
 
-        // assertTrue(allOwnersPage.isCurrentByHeader());
     }
+
     @And("I click on ALL")
     public void iClickOnAll() {
-        allOwnersPage=homePage.clickAllOwners();
+        allOwnersPage = homePage.clickAllOwners();
     }
+
     @Then("I will be directed to AllOwners page")
     public void iWillBeDirectedToAllOwnersPage() {
-     assertTrue(allOwnersPage.isCurrent());
+
+        assertTrue(allOwnersPage.isCurrent());
+        allOwnersPage.closeBrowser();
     }
-
-
-
 
 
 }

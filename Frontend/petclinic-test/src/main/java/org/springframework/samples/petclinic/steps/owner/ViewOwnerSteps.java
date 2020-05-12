@@ -19,36 +19,38 @@ public class ViewOwnerSteps {
         System.setProperty("webdriver.chrome.silentOutput", "true");
         getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
     }
+
     private HomePage homePage = new HomePage();
     private AllOwnersPage allOwnersPage;
     private OwnerPage ownerPage;
 
     //= new AllOwnersPage();
     @Before
-    public void setup(){
+    public void setup() {
         homePage.clickOwners();
-        allOwnersPage=homePage.clickAllOwners();
+        allOwnersPage = homePage.clickAllOwners();
     }
-    @Given("I am on all owners page")
+
+    @Given("I am on all owners page where it contains at least an owner")
     public void iAmOnTheAllOwnerPage() {
 
         System.out.println("wibble im in allOwnersPage");
         assertTrue(allOwnersPage.isCurrent());
+        assertTrue(allOwnersPage.tableSize() > 0);
     }
 
 
     @When("I click on OWNER linked name")
     public void iClickOnOWNERLinkedName() {
 
-        ownerPage=allOwnersPage.clickOnAnOwner();
+        ownerPage = allOwnersPage.clickOnAnOwner();
 
     }
 
     @Then("I will be directed to the owner information page")
     public void iWillBeDirectedToTheOwnerInformationPage() {
-if(ownerPage!=null)
+
         assertTrue(ownerPage.isCurrent());
-else
-    System.out.println("No Owners to view");
+        ownerPage.closeBrowser();
     }
 }

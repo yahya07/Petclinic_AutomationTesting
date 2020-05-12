@@ -8,7 +8,7 @@ public class HomePage extends Page {
     private static final String ADD_OWNER_TAB_SELECTOR="body > app-root > div.container-fluid > nav > div > ul > li.dropdown.open > ul > li:nth-child(2) > a > span:nth-child(2)";
 
     public HomePage(){
-super(new ChromeDriver(),"Welcome");
+super("Welcome", new ChromeDriver());
 goTo("http://localhost:8081/petclinic/");
     }
     public void clickOwners()

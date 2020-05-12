@@ -3,26 +3,26 @@ Feature: Add Owner
   I want to add new customers (owners)
   So that we can track their pets and visits
 
-  Scenario: Successfully enter a new owner's details
-    Given I am on the add-owner form
-    When  I enter valid owner data
-    Then  The submit button is enabled
-#
-  Scenario: Successfully add an owner
-    Given I am on the add-owner form
-    And   I enter valid owner data
-    When  I submit the form
-    Then  The new owner will be displayed at the end of the owner's list
+#  Scenario: Successfully enter a new owner's details
+#    Given I am on the add-owner form
+#    When  I enter valid owner data
+#    Then  The submit button is enabled
 ##
-  Scenario: Unsuccessfully add an owner
-    Given I am on the add-owner form
-    When  I enter invalid data
-    Then  The submit button is disabled
-#
-  Scenario: Short data
-    Given I am on the add-owner form
-    When  I enter invalid data
-    Then  I see a specific message for each field specifying that the field must be at least chars long
+#  Scenario: Successfully add an owner
+#    Given I am on the add-owner form
+#    And   I enter valid owner data
+#    When  I submit the form
+#    Then  The new owner will be displayed at the end of the owner's list
+###
+#  Scenario: Unsuccessfully add an owner
+#    Given I am on the add-owner form
+#    When  I enter invalid data
+#    Then  The submit button is disabled
+##
+#  Scenario: Short data
+#    Given I am on the add-owner form
+#    When  I enter invalid data
+#    Then  I see a specific message for each field specifying that the field must be at least chars long
 
 #  Scenario: Remove values from all the fields
 #    Given I am on the add-owner form
@@ -38,11 +38,11 @@ Feature: Add Owner
     And   I see an error message specifying that the phone number only accepts digits
 
 
-  Scenario: Create owner with symbols and numbers in key fields
-    Given I am on the add-owner form
-    And   I enter symbols and numbers rather than words
-    When  I submit the form
-    Then  The new owner "1223##$" will be displayed at the end of the owner's list
+#  Scenario: Create owner with symbols and numbers in key fields
+#    Given I am on the add-owner form
+#    And   I enter symbols and numbers rather than words
+#    When  I submit the form
+#    Then  The new owner "1223##$" will be displayed at the end of the owner's list
 
 #  Scenario: Duplicate an owner
 #    Given I am on the add-owner form

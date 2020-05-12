@@ -13,7 +13,7 @@ public class EditOwnerPage extends Page {
     public static final String UPDATE_BUTTON="body > app-root > app-owner-edit > div > div > form > div:nth-child(7) > div > button:nth-child(2)";
 
     public EditOwnerPage(WebDriver driver){
-        super(driver,"Edit Owner");
+        super("Edit Owner", driver);
     }
 public void clearField(){
         clearField("#firstName");
@@ -52,7 +52,7 @@ public void enterInvalidTelephone(){
     }
     public boolean checkButtonDisability(){
 
-        return !checkDisability(UPDATE_BUTTON);
+        return !isElementEnabled(UPDATE_BUTTON);
     }
 
 
