@@ -2,34 +2,32 @@ package org.springframework.samples.petclinic.pages;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.springframework.samples.petclinic.pages.petTypesPage.PetTypesPage;
+import org.springframework.samples.petclinic.pages.vet.AddVetPage;
+import org.springframework.samples.petclinic.pages.vet.AllVetsPage;
 
 public class HomePage extends Page {
+
     private static final String URL = "http://localhost:8081/petclinic/";
-    //private static final String PATH_PET_TYPES = "body > app-root > div.container-fluid > nav > div > ul > li:nth-child(4) > a > span:nth-child(2)";
+
     private String pathOwnersDropdown = "body > app-root > div.container-fluid > nav > div > ul > li:nth-child(2) > a";
     private String pathOwners = "body > app-root > div.container-fluid > nav > div > ul > li.dropdown.open > ul > li:nth-child(1) > a";
     private String pathAddOwner = "body > app-root > div.container-fluid > nav > div > ul > li.dropdown.open > ul > li:nth-child(2) > a";
     private String pathVetsDropdown = "body > app-root > div.container-fluid > nav > div > ul > li:nth-child(3) > a";
-     private String pathVets = "body > app-root > div.container-fluid > nav > div > ul > li.dropdown.open > ul > li:nth-child(1) > a";
-     private String pathAddVet = "body > app-root > div.container-fluid > nav > div > ul > li.dropdown.open > ul > li:nth-child(2) > a";
-     private String pathPetTypes = "body > app-root > div.container-fluid > nav > div > ul > li:nth-child(4) > a";
-     private String pathSpecialties = "body > app-root > div.container-fluid > nav > div > ul > li:nth-child(5) > a";
+    private String pathVets = "body > app-root > div.container-fluid > nav > div > ul > li.dropdown.open > ul > li:nth-child(1) > a";
+    private String pathAddVet = "body > app-root > div.container-fluid > nav > div > ul > li.dropdown.open > ul > li:nth-child(2) > a";
+    private String pathPetTypes = "body > app-root > div.container-fluid > nav > div > ul > li:nth-child(4) > a";
+    private String pathSpecialties = "body > app-root > div.container-fluid > nav > div > ul > li:nth-child(5) > a";
+
+
 
 
     public HomePage() {
         super("Welcome",new ChromeDriver(new ChromeOptions().addArguments("--headless")));
         goToHome();
     }
+
     public void goToHome() {
         super.goTo(URL);
-    }
-
-//-------------------------------------------------------------------
-  /*  public AddOwnerPage goToAddOwner() {
-        cssClick(pathOwnersDropdown);
-        cssClick(pathAddOwner);
-        return new AddOwnerPage();
     }
 
     public AddOwnerPage goToAddOwner() {
@@ -61,25 +59,17 @@ public class HomePage extends Page {
     }
 
 
-
-
-    public Specialties goToSpecialties(){
-       cssClick(PATH_SPECIALTIES);
-     return new Specialties(driver);
- }*/
-//------------------------------------------------------------------------
-
     public PetTypesPage goToPetTypes(){
-        cssClick(pathPetTypes);
+       cssClick(pathPetTypes);
         return new PetTypesPage(driver);
-    }
+   }
+//
+//    public Specialties goToSpecialties(){
+//        cssClick(PATH_SPECIALTIES);
+//        return new Specialties(driver);
+//    }
 
-
-
-    /*public PetTypesPage goToPetTypes() {
-        cssClick(PATH_PET_TYPES);
-        return new PetTypesPage(driver);
-    }*/
 
 
 }
+

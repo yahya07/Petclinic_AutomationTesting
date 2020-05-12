@@ -16,7 +16,7 @@ A very simple Full-Stack Web Application that was built for the purposes of test
 
 ## Description
 
-Lets the user see a list of all employees available in the database **(H2)** . Allowing the user to interact with the data either by **adding** , **deleteing** or **updating** the information of any employee.
+Petclinic is a web application that let customers book appointments with vets.Also admins can interact with the data saved in the database **Postgress** either by **viewing**, **adding** , **deleteing** or **updating** the information of any employee.
 
 ## Technologies Used
 
@@ -30,7 +30,6 @@ Lets the user see a list of all employees available in the database **(H2)** . A
 - Cucumber
 - Jenkins
 - Docker
-
 
 ```
 

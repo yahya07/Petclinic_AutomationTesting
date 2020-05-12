@@ -47,7 +47,6 @@ public abstract class Page {
         return title.equals(waitFor(tagName(TITLE_TAG)));
     }
 
-
     public boolean isCurrent(String cssPath,String title) {
         return title.equals(waitFor(cssSelector(cssPath)));
     }
@@ -123,6 +122,12 @@ public abstract class Page {
         return title;
     }
 
+    protected void clearFieldForMac(String cssPath) {
+        driver.findElement(cssSelector(cssPath)).sendKeys(Keys.chord(Keys.COMMAND, "a"));
+        driver.findElement(cssSelector(cssPath)).sendKeys(Keys.chord(Keys.BACK_SPACE));
+    }
+
+
 
     private WebElement cssWaitFor(String cssPath) {
         return wait.until(presenceOfElementLocated(cssSelector(cssPath)));
@@ -146,3 +151,4 @@ public abstract class Page {
 
 
 }
+
