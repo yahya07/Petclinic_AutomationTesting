@@ -23,7 +23,7 @@ public class HomePage extends Page {
 
 
     public HomePage() {
-        super("Welcome",new ChromeDriver(new ChromeOptions().addArguments("--headless")));
+        super("Welcome",new ChromeDriver());
         goToHome();
     }
 

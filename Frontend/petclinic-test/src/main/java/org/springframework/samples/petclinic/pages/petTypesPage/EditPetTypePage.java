@@ -1,12 +1,14 @@
 package org.springframework.samples.petclinic.pages.petTypesPage;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.springframework.samples.petclinic.pages.Page;
 
 public class EditPetTypePage extends Page {
 
-    private static final String URL = "http://localhost:8081/petclinic/pettypes";
-    private static final String UpdateButton = "#pettype > div.form-group.has-feedback > div > button:nth-child(3)";
+    private final String URL = "http://localhost:8081/petclinic/pettypes";
+    private final String UpdateButton = "#pettype > div.form-group.has-feedback > div > button:nth-child(3)";
     private final String NameFiled = "name";
     private final String CancelButton= "#pettype > div.form-group.has-feedback > div > button:nth-child(4)";
 
@@ -19,6 +21,11 @@ public class EditPetTypePage extends Page {
         goTo(URL);
 
     }
+    public boolean EditPetTypesURL()
+    {
+        return  isCurrentUrl(URL);
+
+    }
 
 
     public void NameFiled(String EditFiled) {
@@ -28,9 +35,9 @@ public class EditPetTypePage extends Page {
 
 
     public PetTypesPage UpdateButton() {
-       cssClick(UpdateButton);
-       implicitlyWait(5);
-       return  new PetTypesPage(driver);
+        cssClick(UpdateButton);
+        implicitlyWait(5);
+        return  new PetTypesPage(driver);
     }
 
     public void removeText() {
