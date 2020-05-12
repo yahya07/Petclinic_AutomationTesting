@@ -15,11 +15,6 @@ import static java.util.logging.Logger.getLogger;
 import static org.junit.Assert.*;
 
 public class AddOwnerSteps {
-    static {
-        System.setProperty("webdriver.chrome.driver", "/chromedriver.exe");
-        System.setProperty("webdriver.chrome.silentOutput", "true");
-        getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
-    }
 
     public String shortInputErrorMsg = "First name must be at least 2 characters long";
     public String numericInputErrorMsg = "Phone number only accept digits";
@@ -32,23 +27,19 @@ public class AddOwnerSteps {
     private HomePage homePage = new HomePage();
     private AllOwnersPage allOwnersPage;
 
-    @Before
-    public void setup() {
-       // homePage.clickOwners();
-        addOwnerPage = homePage.goToAddOwner();
-    }
+
 
     @Given("I am on the add-owner form")
     public void iAmOnTheAddOwnerForm() {
+        addOwnerPage = homePage.goToAddOwner();
 
-        System.out.println("wibble iAmOnTheAddOwnerForm");
         assertTrue(addOwnerPage.isCurrent());
     }
 
     @When("I enter valid owner data")
     public void iEnterValidData() {
 
-        System.out.println("wibble iEnterValidData");
+
         addOwnerPage.enterValidData();
 
 
@@ -59,7 +50,7 @@ public class AddOwnerSteps {
         //  assertTrue(addOwnerPage.checkTick());
         assertFalse(addOwnerPage.checkButtonDisability());
         addOwnerPage.closeBrowser();
-        System.out.println("wibble eachFieldWillHaveATickOnTheRight");
+
 
     }
 

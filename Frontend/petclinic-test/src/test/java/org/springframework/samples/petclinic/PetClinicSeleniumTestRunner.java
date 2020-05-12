@@ -16,7 +16,7 @@ import static java.util.logging.Logger.getLogger;
         strict = true,
         snippets = CAMELCASE,
         tags = "not @wip",
-        features = "src/test/resources/owner/EditOwner.feature")
+        features = "src/test/resources")
 public class PetClinicSeleniumTestRunner {
 
     static {
@@ -30,4 +30,3 @@ public class PetClinicSeleniumTestRunner {
 
 
 }
-

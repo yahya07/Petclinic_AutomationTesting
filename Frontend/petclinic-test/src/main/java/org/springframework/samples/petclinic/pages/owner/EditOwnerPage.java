@@ -18,12 +18,9 @@ public class EditOwnerPage extends Page {
     public EditOwnerPage(WebDriver driver){
         super("Edit Owner", driver);
     }
+
 public void clearField(){
-//        clearField("#firstName");
-//        clearField("#lastName");
-//    clearField("#address");
-//    clearField("#city");
-//    clearField("#telephone");
+
     fill(FIRST_NAME_SELECTOR,Plane_String);
     fill(LAST_NAME_SELECTOR,Plane_String);
     fill(ADDRESS_SELECTOR,Plane_String);
@@ -65,3 +62,4 @@ public void enterInvalidTelephone(){
 
 
 }
+

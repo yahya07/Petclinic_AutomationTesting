@@ -3,6 +3,7 @@ package org.springframework.samples.petclinic.steps.pet;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
 import org.springframework.samples.petclinic.pages.HomePage;
 import org.springframework.samples.petclinic.pages.owner.AllOwnersPage;
 import org.springframework.samples.petclinic.pages.owner.OwnerInformationPage;
@@ -21,7 +22,7 @@ public class RemovePetSteps {
     @Given("I am on the owner information page")
     public void iAmOnTheOwnerInformationPage() {
         allOwnersPage = homePage.goToOwnersList();
-       // ownerInformationPage = allOwnersPage.getFirstOwner();
+        ownerInformationPage = allOwnersPage.getFirstOwner();
         assertTrue(ownerInformationPage.isCurrent());
     }
 
@@ -33,5 +34,6 @@ public class RemovePetSteps {
     @Then("The pet disappear from the pets table")
     public void thePetDisappearFromThePetsTable() {
         assertEquals(1, lengthDifference);
+        ownerInformationPage.closeBrowser();
     }
 }

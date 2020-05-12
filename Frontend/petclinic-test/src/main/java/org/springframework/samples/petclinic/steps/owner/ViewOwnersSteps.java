@@ -15,11 +15,7 @@ import static java.util.logging.Logger.getLogger;
 import static org.junit.Assert.*;
 
 public class ViewOwnersSteps {
-    static {
-        System.setProperty("webdriver.chrome.driver", "/chromedriver.exe");
-        System.setProperty("webdriver.chrome.silentOutput", "true");
-        getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
-    }
+
 
     private HomePage homePage = new HomePage();
     private AllOwnersPage allOwnersPage;
@@ -27,7 +23,7 @@ public class ViewOwnersSteps {
     @Given("I am on the home page for petclinic")
     public void iAmOnTheHomePage() {
 
-        System.out.println("wibble iAmOnTheHomePage");
+
         assertTrue(homePage.isCurrent());
     }
 

@@ -14,26 +14,18 @@ import static java.util.logging.Logger.getLogger;
 import static org.junit.Assert.assertTrue;
 
 public class ViewOwnerSteps {
-    static {
-        System.setProperty("webdriver.chrome.driver", "/chromedriver.exe");
-        System.setProperty("webdriver.chrome.silentOutput", "true");
-        getLogger("org.openqa.selenium").setLevel(Level.SEVERE);
-    }
+
 
     private HomePage homePage = new HomePage();
     private AllOwnersPage allOwnersPage;
     private OwnerInformationPage ownerInformationPage;
 
-    //= new AllOwnersPage();
-    @Before
-    public void setup() {
-       // homePage.clickOwners();
-        allOwnersPage = homePage.goToOwnersList();
-    }
+
 
     @Given("I am on all owners page where it contains at least an owner")
     public void iAmOnTheAllOwnerPage() {
 
+        allOwnersPage = homePage.goToOwnersList();
         System.out.println("wibble im in allOwnersPage");
         assertTrue(allOwnersPage.isCurrent());
         assertTrue(allOwnersPage.tableSize() > 0);

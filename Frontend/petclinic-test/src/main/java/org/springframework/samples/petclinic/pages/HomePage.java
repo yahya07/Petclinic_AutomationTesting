@@ -40,8 +40,6 @@ public class HomePage extends Page {
     }
 
 
-
-
     public AllOwnersPage goToOwnersList(){
         cssClick(pathOwnersDropdown);
         cssClick(pathOwners);
@@ -62,17 +60,16 @@ public class HomePage extends Page {
     }
 
 
+
     public PetTypesPage goToPetTypes(){
         cssClick(pathPetTypes);
         return new PetTypesPage(driver);
     }
-//
-//    public Specialties goToSpecialties(){
-//        cssClick(PATH_SPECIALTIES);
-//        return new Specialties(driver);
-//    }
+
+
+
+
 
 
 
 }
-

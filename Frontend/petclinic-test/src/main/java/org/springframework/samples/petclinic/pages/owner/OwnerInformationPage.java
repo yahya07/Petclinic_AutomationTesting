@@ -7,6 +7,8 @@ import org.springframework.samples.petclinic.pages.Page;
 import org.springframework.samples.petclinic.pages.owner.EditOwnerPage;
 import org.springframework.samples.petclinic.pages.pet.AddPetPage;
 import org.springframework.samples.petclinic.pages.pet.EditPetPage;
+import org.springframework.samples.petclinic.pages.visit.AddVisitPage;
+import org.springframework.samples.petclinic.pages.visit.EditVisitPage;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -57,5 +59,30 @@ public class OwnerInformationPage extends Page {
         String fullName = FIRST_NAME + " " + LAST_NAME;
         System.out.println(fullName + getText("/html/body/app-root/app-owner-detail/div/div/table[1]/tr[1]/td/b"));
         return fullName.equals(getText("/html/body/app-root/app-owner-detail/div/div/table[1]/tr[1]/td/b"));
+    }
+
+    public AddVisitPage addNewVisit (){
+        cssClick("body > app-root > app-owner-detail > div > div > table:nth-child(10) > tr > app-pet-list:nth-child(1) > table > tr > td:nth-child(1) > dl > button:nth-child(9)");
+        return new AddVisitPage(driver);
+    }
+
+    public EditVisitPage editVisitPage(){
+        cssClick("body > app-root > app-owner-detail > div > div > table:nth-child(10) > tr > app-pet-list:nth-child(1) > table > tr > td:nth-child(2) > app-visit-list > table > tr:nth-child(2) > td:nth-child(3) > button:nth-child(1)");
+        return new EditVisitPage(driver);
+    }
+
+    public OwnerInformationPage removeVisit(){
+
+        cssClick("body > app-root > app-owner-detail > div > div > table:nth-child(10) > tr > app-pet-list:nth-child(1) > table > tr > td:nth-child(2) > app-visit-list > table > tr:nth-child(2) > td:nth-child(3) > button:nth-child(1)");
+        refresh();
+        return new OwnerInformationPage(driver);
+    }
+
+    public String visitUpdatedSuccessfully(){
+        return getText("/html/body/app-root/app-owner-detail/div/div/table[2]/tr/app-pet-list[2]/table/tr/td[2]/app-visit-list/table/tr[1]/td[2]");
+    }
+
+    public boolean checkDeleted(){
+        return driver.getPageSource().contains("This will be deleted after update");
     }
 }

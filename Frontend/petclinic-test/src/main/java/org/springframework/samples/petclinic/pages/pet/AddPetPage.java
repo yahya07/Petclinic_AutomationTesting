@@ -6,16 +6,11 @@ import org.springframework.samples.petclinic.pages.owner.OwnerInformationPage;
 
 public class AddPetPage extends Page {
 
-    private static final String URL = "http://localhost:8081/petclinic/owners/1/pets/add";
-
 
     public AddPetPage(WebDriver driver) {
         super("Add Pet",driver);
     }
 
-    public void goToAddPetPage() {
-        goTo(URL);
-    }
 
     public void fillInForm(String name, String birthDate, int index) {
 
