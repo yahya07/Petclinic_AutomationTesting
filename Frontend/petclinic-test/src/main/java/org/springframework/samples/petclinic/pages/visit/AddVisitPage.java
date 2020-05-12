@@ -6,21 +6,17 @@ import org.springframework.samples.petclinic.pages.Page;
 
 public class AddVisitPage extends Page {
 
-    private static final String URL="http://localhost:8081/petclinic/pets/8/visits/add";
-    private static final String DATE_FIELD_CSS = "#visit > div.form-group.has-feedback > div:nth-child(1) > div > input";
-    private static final String DESCRIPTION_FILED_CSS = "#description";
-    private static final String SUBMIT_BUTTON_CSS = "#visit > div:nth-child(2) > div > button:nth-child(4)";
-    private static final String VALID_DATE_VALUE = "2019-09-08";
-    private static final String INVALID_DATE_VALUE = "hgkj-hg-mm";
-    private static final String VALID_DESCRIPTION_VALUE  = "Visit description has been written for add test.";
-    private static final String INVALID_DESCRIPTION_VALUE  = "$%^&**(&%%$";
+    private final String URL="http://localhost:8081/petclinic/pets/8/visits/add";
+    private final String DATE_FIELD_CSS = "#visit > div.form-group.has-feedback > div:nth-child(1) > div > input";
+    private final String DESCRIPTION_FILED_CSS = "#description";
+    private final String SUBMIT_BUTTON_CSS = "#visit > div:nth-child(2) > div > button:nth-child(4)";
+    private final String VALID_DATE_VALUE = "2019-09-08";
+    private final String INVALID_DATE_VALUE = "hgkj-hg-mm";
+    private final String VALID_DESCRIPTION_VALUE  = "Visit description has been written for add test.";
+    private final String INVALID_DESCRIPTION_VALUE  = "$%^&**(&%%$";
 
     public AddVisitPage(WebDriver driver) {
         super("New Visit",driver);
-    }
-
-    public void goToAddVisitForm() {
-        goTo(URL);
     }
 
     public void fillValidVisitForm() {
