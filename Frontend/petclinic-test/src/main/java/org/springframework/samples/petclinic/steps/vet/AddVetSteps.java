@@ -41,15 +41,9 @@ public class AddVetSteps {
 
     @Then("The new vet will be displayed at the end of the vets's list")
     public void theNewVetWillBeDisplayedAtTheEndOfTheVetsSList() {
-<<<<<<< HEAD
-        assertTrue(addVet.isAdded());
-//        addVet.closeBrowser();
-
-=======
         allVets = addVet.saveAndRedirect();
         assertTrue(allVets.exists(fullName));
         allVets.closeBrowser();
->>>>>>> 30c6b0f7e4b8351acd0d3b98864f7e27bedd97f6
     }
 
 
@@ -68,7 +62,7 @@ public class AddVetSteps {
     @Then("page is not redirected")
     public void pageIsNotRedirected() {
         assertTrue(addVet.pageNotRedirected());
-//        addVet.closeBrowser();
+        addVet.closeBrowser();
     }
 
 
@@ -79,8 +73,8 @@ public class AddVetSteps {
     }
     @Then("I see error message specifying at least two chars long")
     public void iSeeErrorMessageSpecifyingAtLeastTwoCharsLong() {
-//        assertTrue(addVet.isTwoCharErrorShowing());
-//        addVet.closeBrowser();
+        assertTrue(addVet.isTwoCharErrorShowing());
+        addVet.closeBrowser();
 
     }
 
@@ -92,14 +86,9 @@ public class AddVetSteps {
 
     @Then("The new short vet will be displayed at the end of the vets's list")
     public void theNewShortVetWillBeDisplayedAtTheEndOfTheVetsSList() {
-<<<<<<< HEAD
-        assertTrue(addVet.isShortAdded());
-//        addVet.closeBrowser();
-=======
         allVets = addVet.saveAndRedirect();
         assertTrue(allVets.exists(shortComb));
         allVets.closeBrowser();
->>>>>>> 30c6b0f7e4b8351acd0d3b98864f7e27bedd97f6
     }
 
     //   Scenario: Create Vet with symbols and numbers in fields
@@ -109,13 +98,8 @@ public class AddVetSteps {
     }
     @Then("The new numeric vet will be displayed at the end of the vets's list")
     public void theNewNumericVetWillBeDisplayedAtTheEndOfTheVetsSList() {
-<<<<<<< HEAD
-        assertTrue(addVet.isNumericSymbolsAdded());
-//        addVet.closeBrowser();
-=======
         allVets = addVet.saveAndRedirect();
         assertTrue(allVets.exists(numsymComb));
         allVets.closeBrowser();
->>>>>>> 30c6b0f7e4b8351acd0d3b98864f7e27bedd97f6
     }
 }

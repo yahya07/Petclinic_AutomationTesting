@@ -149,5 +149,21 @@ public abstract class Page {
         return errorMsg.equals(driver.findElement(By.className(className)).getText());
     }
 
+    public boolean checkPresentOfErrorMsg(String errorMsg) {
 
+        return driver.getPageSource().contains(errorMsg);
+
+    }
+
+
+    protected void linkTextClick(String path) {
+
+        driver.findElement(By.partialLinkText(path)).click();
+
+    }
+    protected int sizeOfTable(String xpath){
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        List<WebElement> tableElements = driver.findElements(By.xpath(xpath));
+        return tableElements.size();
+    }
 }

@@ -1,8 +1,8 @@
 package org.springframework.samples.petclinic.pages.visit;
 
 import org.openqa.selenium.WebDriver;
-import org.springframework.samples.petclinic.pages.OwnerInformationPage;
 import org.springframework.samples.petclinic.pages.Page;
+import org.springframework.samples.petclinic.pages.owner.OwnerInformationPage;
 
 public class EditVisitPage extends Page {
 
