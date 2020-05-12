@@ -25,10 +25,10 @@ public class AddOwnerSteps {
     public String numericInputErrorMsg = "Phone number only accept digits";
 
     public static final String FIRST_NAME = "first name tester";
-    //+ new Random();
+
     public static final String LAST_NAME = "lastName tester";
     private AddOwnerPage addOwnerPage;
-    //= new AddOwnerPage();
+
     private HomePage homePage = new HomePage();
     private AllOwnersPage allOwnersPage;
 
@@ -63,7 +63,7 @@ public class AddOwnerSteps {
 
     }
 
-    @When("I submit the form")
+    @When("I submit the add owner form")
     public void iSubmitTheForm() {
         allOwnersPage = addOwnerPage.submit();
   }
@@ -84,7 +84,7 @@ public class AddOwnerSteps {
     public void theSubmitButtonIsDisabled() {
 
         assertTrue(addOwnerPage.checkButtonDisability());
-        //addOwnerPage.closeBrowser();
+        
     }
 
     @Then("I see a specific message for each field specifying that the field must be at least chars long")

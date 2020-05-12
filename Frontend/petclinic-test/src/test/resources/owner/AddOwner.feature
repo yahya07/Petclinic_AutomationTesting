@@ -11,7 +11,7 @@ Feature: Add Owner
   Scenario: Successfully add an owner
     Given I am on the add-owner form
     And   I enter valid owner data
-    When  I submit the form
+    When  I submit the add owner form
     Then  The new owner will be displayed at the end of the owner's list
 ##
   Scenario: Unsuccessfully add an owner
@@ -41,7 +41,7 @@ Feature: Add Owner
   Scenario: Create owner with symbols and numbers in key fields
     Given I am on the add-owner form
     And   I enter symbols and numbers rather than words
-    When  I submit the form
+    When  I submit the add owner form
     Then  The new owner "1223##$" will be displayed at the end of the owner's list
 
 #  Scenario: Duplicate an owner

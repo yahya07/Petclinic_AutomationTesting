@@ -24,26 +24,17 @@ goToHome();
     public void goToHome() {
         super.goTo(URL);
     }
-//    public void clickOwners()
-//    {
-//
-//        linkTextClick(OWNER_TAB_SELECTOR);
-//    }
+
 
     public AllOwnersPage goToOwnersList()
     {
-//        linkTextClick(OWNER_TAB_SELECTOR);
-//        linkTextClick(ALL_OWNERS_TAB_SELECTOR);
-//        return new AllOwnersPage(super.driver);
         cssClick(pathOwnersDropdown);
         cssClick(pathOwners);
         return new AllOwnersPage(driver);
     }
 
     public AddOwnerPage goToAddOwner() {
-//        linkTextClick(OWNER_TAB_SELECTOR);
-//        cssClick(ADD_OWNER_TAB_SELECTOR);
-//        return new AddOwnerPage(super.driver);
+
         cssClick(pathOwnersDropdown);
         cssClick(pathAddOwner);
         return new AddOwnerPage(driver);
