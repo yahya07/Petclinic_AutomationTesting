@@ -12,17 +12,23 @@ public class EditOwnerPage extends Page {
     private final String TELEPHONE_SELECTOR="telephone";
     private final String UPDATED_TEXT="Updated";
     private final String UPDATED_PHONE_NUM="11111";
+    private final String Plane_String=" ";
     private final String UPDATE_BUTTON="body > app-root > app-owner-edit > div > div > form > div:nth-child(7) > div > button:nth-child(2)";
 
     public EditOwnerPage(WebDriver driver){
         super("Edit Owner", driver);
     }
 public void clearField(){
-        clearField("#firstName");
-        clearField("#lastName");
-    clearField("#address");
-    clearField("#city");
-    clearField("#telephone");
+//        clearField("#firstName");
+//        clearField("#lastName");
+//    clearField("#address");
+//    clearField("#city");
+//    clearField("#telephone");
+    fill(FIRST_NAME_SELECTOR,Plane_String);
+    fill(LAST_NAME_SELECTOR,Plane_String);
+    fill(ADDRESS_SELECTOR,Plane_String);
+    fill(CITY_SELECTOR,Plane_String);
+    fill(TELEPHONE_SELECTOR,Plane_String);
 }
 public void enterValidUpdatedData(){
         fill(FIRST_NAME_SELECTOR,UPDATED_TEXT);

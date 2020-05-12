@@ -3,6 +3,7 @@ package org.springframework.samples.petclinic.pages;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.samples.petclinic.pages.owner.AddOwnerPage;
+import org.springframework.samples.petclinic.pages.owner.AllOwnersPage;
 import org.springframework.samples.petclinic.pages.petTypesPage.PetTypesPage;
 import org.springframework.samples.petclinic.pages.vet.AddVetPage;
 import org.springframework.samples.petclinic.pages.vet.AllVetsPage;
@@ -24,7 +25,7 @@ public class HomePage extends Page {
 
 
     public HomePage() {
-        super("Welcome",new ChromeDriver());
+        super("Welcome",new ChromeDriver(new ChromeOptions().addArguments("--headless")));
         goToHome();
     }
 
