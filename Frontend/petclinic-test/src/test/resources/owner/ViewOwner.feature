@@ -5,6 +5,6 @@ Feature: View Owner
   our owner information.
 
   Scenario: Successfully view owner information page
-    Given I am on all owner page
+    Given I am on all owners page
     When I click on OWNER linked name
     Then  I will be directed to the owner information page

@@ -26,6 +26,8 @@ public class AddOwnerPage extends Page {
     public static final String ADDRESS_SELECTOR="address";
     public static final String CITY_SELECTOR="city";
     public static final String TELEPHONE_SELECTOR="telephone";
+    public final String ONE_CHAR_VARIABLE="A";
+    public final String SYMBOLS_AND_CHARACTERS ="1223##$";
     public static final String CLICK_BUTTON="body > app-root > app-owner-add > div > div > form > div:nth-child(7) > div > button:nth-child(2)";
 
     public static final String TICK_CLASSNAME="glyphicon form-control-feedback glyphicon-ok";
@@ -45,13 +47,34 @@ public class AddOwnerPage extends Page {
         fill(TELEPHONE_SELECTOR,TELEPHONE);
 
     }
+    public void enterInvalidData(){
+        fill(FIRST_NAME_SELECTOR,ONE_CHAR_VARIABLE);
+
+        fill(LAST_NAME_SELECTOR,ONE_CHAR_VARIABLE);
+        fill(ADDRESS_SELECTOR,ONE_CHAR_VARIABLE);
+        fill(CITY_SELECTOR,ONE_CHAR_VARIABLE);
+        fill(TELEPHONE_SELECTOR,ONE_CHAR_VARIABLE);
+    }
+    public void enterSymbolsAndNumbers(){
+        fill(FIRST_NAME_SELECTOR,SYMBOLS_AND_CHARACTERS);
+
+        fill(LAST_NAME_SELECTOR,SYMBOLS_AND_CHARACTERS);
+        fill(ADDRESS_SELECTOR,SYMBOLS_AND_CHARACTERS);
+        fill(CITY_SELECTOR,SYMBOLS_AND_CHARACTERS);
+        fill(TELEPHONE_SELECTOR,TELEPHONE);
+    }
     public boolean checkTick(){
+//        String selector,String tickPath
         boolean firstNameTick= checkTick(FIRST_NAME_SELECTOR,TICK_CLASSNAME);
         boolean lastNameTick=  checkTick(LAST_NAME_SELECTOR,TICK_CLASSNAME);
         boolean addressTick=  checkTick(ADDRESS_SELECTOR,TICK_CLASSNAME);
         boolean cityTick= checkTick(CITY_SELECTOR,TICK_CLASSNAME);
         boolean telephoneTick= checkTick(TELEPHONE_SELECTOR,TICK_CLASSNAME);
+     //   super.checkTick(selector,tickPath);
         return (firstNameTick&lastNameTick&addressTick&cityTick&telephoneTick);
+    }
+    public boolean checkButtonDisability(){
+        return !checkDisability(CLICK_BUTTON);
     }
     //todo: it's not stay on the list page
     public AllOwnersPage submit() {
@@ -64,6 +87,9 @@ public class AddOwnerPage extends Page {
 //        String fullName=FIRST_NAME+" "+LAST_NAME;
 //        return fullName.equals(allTableElements(ALL_OWNERS_TABLE).get(allTableElements(ALL_OWNERS_TABLE).size()-1).getText());
 //    }
+    public boolean checkErrorMsg(String errorMsg){
+        return checkPresentOfErrorMsg(errorMsg);
+    }
     public boolean pageNotRedirected(){
 
         return isNotRedirected(URL);
