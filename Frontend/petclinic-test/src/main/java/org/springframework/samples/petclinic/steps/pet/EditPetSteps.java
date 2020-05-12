@@ -57,11 +57,13 @@ public class EditPetSteps {
     @Then("The pet information will be updated and displayed at the owner information page")
     public void thePetInformationWillBeUpdatedAndDisplayedAtTheOwnerInformationPage() {
         assertTrue(ownerInformationPage.petNames().contains(name));
+        ownerInformationPage.closeBrowser();
     }
 
     @Then("I remain in the edit pet page")
     public void iRemainInTheEditPetPage() {
         assertTrue(editPetPage.isCurrent());
+        editPetPage.closeBrowser();
     }
 
 

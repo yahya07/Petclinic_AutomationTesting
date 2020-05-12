@@ -36,11 +36,11 @@ public class EditVetSteps {
     }
     @Then("The edited vet will be displayed at the end of the vets's list")
     public void theEditedVetWillBeDisplayedAtTheEndOfTheVetsSList() {
-     assertTrue(allVets.exists(validEdited));
+        assertTrue(allVets.exists(validEdited));
         allVets.closeBrowser();
     }
 
-//   Scenario: Unsuccessfully edit a Vet to be blank
+    //   Scenario: Unsuccessfully edit a Vet to be blank
     @And("I clear all data")
     public void iClearAllData() {
         editVet.fillData(" "," ");
@@ -82,3 +82,4 @@ public class EditVetSteps {
         allVets.closeBrowser();
     }
 }
+

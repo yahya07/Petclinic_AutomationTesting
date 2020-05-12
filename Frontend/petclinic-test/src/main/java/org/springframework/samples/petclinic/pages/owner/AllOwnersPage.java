@@ -12,13 +12,15 @@ public class AllOwnersPage extends Page {
 
     public AllOwnersPage(WebDriver driver){
 
-      super("Owners", driver);
+        super("Owners", driver);
+
     }
 
     public boolean isAdded(String FIRST_NAME,String LAST_NAME) {
         String fullName=FIRST_NAME+" "+LAST_NAME;
         return fullName.equals(getElements(ALL_OWNERS_TABLE).get(getElements(ALL_OWNERS_TABLE).size()-1).getText());
     }
+
 
 public int tableSize(){
         return sizeOfTable(ALL_OWNERS_TABLE);
@@ -42,3 +44,4 @@ public int tableSize(){
     }
 
 }
+
