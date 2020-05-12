@@ -5,10 +5,11 @@ import org.springframework.samples.petclinic.pages.Page;
 
 public class EditVetPage extends Page {
 
-    private static final String SAVE_BUTTON = "#vet_form > div:nth-child(5) > div > button:nth-child(3)";
-    private static final String ERROR_CLASS = "help-block";
-    private static final String FIRST_NAME_BLANK_ERROR = "First name must be at least 2 characters long";
-    private static final String LAST_NAME_BLANK_ERROR = "First name must be at least 2 characters long";
+    private String saveBtn = "#vet_form > div:nth-child(5) > div > button:nth-child(3)";
+    private String backBtn = "#vet_form > div:nth-child(5) > div > button:nth-child(2)";
+    private String errClass = "help-block";
+    private String fnameBlankError = "First name must be at least 2 characters long";
+    private String lnameBlankError = "First name must be at least 2 characters long";
 
 
 
@@ -24,19 +25,26 @@ public class EditVetPage extends Page {
 
     public AllVetsPage saveAndRedirect() {
 
-        cssClick(SAVE_BUTTON);
+        cssClick(saveBtn);
         return new AllVetsPage(driver);
     }
 
-    public boolean isFieldsBlankErrorShowiing()
+    public AllVetsPage backAndRedirect() {
+
+        implicitlyWait(5);
+        cssClick(backBtn);
+        return new AllVetsPage(driver);
+    }
+
+    public boolean isFieldsBlankErrorShowing()
     {
 
-        return isErrorShowing(ERROR_CLASS,FIRST_NAME_BLANK_ERROR) && isErrorShowing(ERROR_CLASS,LAST_NAME_BLANK_ERROR);
+        return isErrorShowing(errClass, fnameBlankError) && isErrorShowing(errClass, lnameBlankError);
     }
 
     public boolean saveButtonDisabled()
     {
-        return isElementEnabled(SAVE_BUTTON);
+        return isElementEnabled(saveBtn);
     }
 
 

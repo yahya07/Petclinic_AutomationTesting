@@ -3,10 +3,11 @@ package org.springframework.samples.petclinic.steps.pet;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.springframework.samples.petclinic.pages.AllOwnersPage;
+import io.cucumber.java.en.When;
 import org.springframework.samples.petclinic.pages.HomePage;
+import org.springframework.samples.petclinic.pages.owner.AllOwnersPage;
+import org.springframework.samples.petclinic.pages.owner.OwnerInformationPage;
 import org.springframework.samples.petclinic.pages.pet.EditPetPage;
-import org.springframework.samples.petclinic.pages.OwnerInformationPage;
 
 import static org.junit.Assert.assertTrue;
 
@@ -18,8 +19,8 @@ public class EditPetSteps {
     private OwnerInformationPage ownerInformationPage;
     private EditPetPage editPetPage;
     private String name = "Updated";
-    private String birthDate = "2019/01/01";
-    private int index = 1;
+    private final String birthDate = "2019/01/01";
+    private final int index = 1;
 
     @Given("I am on the edit-pet form")
     public void iAmOnTheEditPetForm() {
@@ -33,21 +34,24 @@ public class EditPetSteps {
     @And("I update with valid pet data")
     public void iUpdateWithValidPetData() {
         editPetPage.fillInForm(name, birthDate, index);
+    }
+
+    @When("I submit the edit-pet form")
+    public void iSubmitTheEditPetForm() {
         ownerInformationPage = editPetPage.submit();
+
     }
 
 
     @And("I update the birth date field with a non-date formatted value")
     public void iUpdateTheBirthDateFieldWithANonDateFormattedValue() {
         editPetPage.fillInForm(name, "abc", index);
-        ownerInformationPage = editPetPage.submit();
     }
 
     @And("I update the name field with symbols and numbers rather than words")
     public void iUpdateTheNameFieldWithSymbolsAndNumbersRatherThanWords() {
         name = "%45$^";
         editPetPage.fillInForm(name, birthDate, index);
-        ownerInformationPage = editPetPage.submit();
     }
 
     @Then("The pet information will be updated and displayed at the owner information page")
@@ -61,4 +65,6 @@ public class EditPetSteps {
         assertTrue(editPetPage.isCurrent());
         editPetPage.closeBrowser();
     }
+
+
 }

@@ -27,7 +27,6 @@ public class EditVetSteps {
     @When("I click edit button the for the first vet")
     public void iClickEditButtonTheForTheFirstVet() {
         editVet = allVets.editFirst();
-        assertTrue(editVet.isCurrent());
     }
 
     @And("I enter valid data")
@@ -37,18 +36,18 @@ public class EditVetSteps {
     }
     @Then("The edited vet will be displayed at the end of the vets's list")
     public void theEditedVetWillBeDisplayedAtTheEndOfTheVetsSList() {
-     assertTrue(allVets.exists(validEdited));
+        assertTrue(allVets.exists(validEdited));
         allVets.closeBrowser();
     }
 
-//   Scenario: Unsuccessfully edit a Vet to be blank
+    //   Scenario: Unsuccessfully edit a Vet to be blank
     @And("I clear all data")
     public void iClearAllData() {
         editVet.fillData(" "," ");
     }
     @But("two errors show up")
     public void twoErrorsShowUp() {
-        editVet.isFieldsBlankErrorShowiing();
+        editVet.isFieldsBlankErrorShowing();
     }
     @Then("save button is disabled")
     public void saveButtonIsDisabled() {
@@ -69,5 +68,17 @@ public class EditVetSteps {
         editVet.fillData("2131234254","123412542");
         allVets = editVet.saveAndRedirect();
 
+    }
+
+    //   Scenario: Successfully click back button from edit form
+    @And("I click back button in edit vet form")
+    public void iClickBackButtonInEditVetForm() {
+        allVets = editVet.backAndRedirect();
+    }
+
+    @Then("I am back again in All vets page")
+    public void iAmBackAgainInAllVetsPage() {
+        assertTrue(allVets.isCurrent());
+        allVets.closeBrowser();
     }
 }

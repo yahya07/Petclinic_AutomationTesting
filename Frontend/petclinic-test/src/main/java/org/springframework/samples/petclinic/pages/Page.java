@@ -51,7 +51,6 @@ public abstract class Page {
         return title.equals(waitFor(cssSelector(cssPath)));
     }
 
-
     protected void goTo(String url) {
         driver.get(url);
     }
@@ -123,6 +122,12 @@ public abstract class Page {
         return title;
     }
 
+    protected void clearFieldForMac(String cssPath) {
+        driver.findElement(cssSelector(cssPath)).sendKeys(Keys.chord(Keys.COMMAND, "a"));
+        driver.findElement(cssSelector(cssPath)).sendKeys(Keys.chord(Keys.BACK_SPACE));
+    }
+
+
 
     private WebElement cssWaitFor(String cssPath) {
         return wait.until(presenceOfElementLocated(cssSelector(cssPath)));
@@ -144,5 +149,21 @@ public abstract class Page {
         return errorMsg.equals(driver.findElement(By.className(className)).getText());
     }
 
+    public boolean checkPresentOfErrorMsg(String errorMsg) {
 
+        return driver.getPageSource().contains(errorMsg);
+
+    }
+
+
+    protected void linkTextClick(String path) {
+
+        driver.findElement(By.partialLinkText(path)).click();
+
+    }
+    protected int sizeOfTable(String xpath){
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        List<WebElement> tableElements = driver.findElements(By.xpath(xpath));
+        return tableElements.size();
+    }
 }
