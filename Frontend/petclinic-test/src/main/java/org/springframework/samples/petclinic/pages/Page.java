@@ -50,7 +50,7 @@ public abstract class Page {
     public boolean isCurrent(String cssPath,String title) {
         return title.equals(waitFor(cssSelector(cssPath)));
     }
-    
+
     protected void goTo(String url) {
         driver.get(url);
     }
