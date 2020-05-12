@@ -1,8 +1,11 @@
 package org.springframework.samples.petclinic;
 
+import io.cucumber.java.After;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
 import static java.util.logging.Level.SEVERE;
@@ -20,6 +23,11 @@ public class PetClinicSeleniumTestRunner {
         System.setProperty("webdriver.chrome.driver", System.getenv("driverPath"));
         System.setProperty("webdriver.chrome.silentOutput", "true");
         getLogger("org.openqa.selenium").setLevel(SEVERE);
+
+
+
     }
 
+
 }
+

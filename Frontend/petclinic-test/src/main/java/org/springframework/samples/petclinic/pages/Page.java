@@ -14,12 +14,14 @@ import static org.openqa.selenium.By.*;
 import static org.openqa.selenium.Keys.chord;
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
+
 public abstract class Page {
 
     protected WebDriver driver;
     private final String TITLE_TAG = "h2";
     private final String title;
     private WebDriverWait wait;
+
 
     protected Page(String title, WebDriver driver) {
         this.driver = driver;
@@ -36,7 +38,6 @@ public abstract class Page {
         return url.equals(driver.getCurrentUrl());
     }
 
-
     public boolean isElementEnabled(String cssPath) {
         return driver.findElement(cssSelector(cssPath)).isEnabled();
 
@@ -44,8 +45,10 @@ public abstract class Page {
 
     public boolean isCurrent() {
         return title.equals(waitFor(tagName(TITLE_TAG)));
+    }
 
-       // return title.equals(driver.findElement(By.tagName(TITLE_TAG)).getText());
+    public boolean isCurrent(String cssPath,String title) {
+        return title.equals(waitFor(cssSelector(cssPath)));
     }
 
     protected void goTo(String url) {
@@ -53,20 +56,20 @@ public abstract class Page {
     }
 
     protected void cssClick(String path) {
-
         driver.findElement(cssSelector(path)).click();
     }
 
     protected String getText(String cssPath) {
-
         return driver.findElement(xpath(cssPath)).getText();
     }
+
 
     protected void fill(String id, String value) {
         final WebElement element = waitFor(id);
         element.clear();
         element.sendKeys(value);
     }
+
     protected void cssFill(String cssPath, String value) {
         final WebElement element = cssWaitFor(cssPath);
         element.clear();
@@ -76,29 +79,29 @@ public abstract class Page {
     protected void clearField(String cssPath) {
         driver.findElement(cssSelector(cssPath)).sendKeys(chord(Keys.CONTROL, "a", Keys.DELETE));
     }
-    protected void selectFirst(String id) {
 
-        new Select(driver.findElement(By.id(id))).selectByIndex(1);
+    protected void selectFirst(String id) {
+        new Select(driver.findElement(id(id))).selectByIndex(1);
     }
+
 
     protected void select(String id, int i) {
         new Select(driver.findElement(id(id))).selectByIndex(i - 1);
     }
+
     protected List<WebElement> getElements(String xPath) {
-//        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-//        List<WebElement> tableElements = driver.findElements(By.xpath(xpath));
-//        return tableElements;
         implicitlyWait(10);
         return driver.findElements(xpath(xPath));
     }
-    protected void click(String id) {
 
+    protected void click(String id) {
         waitFor(id).click();
     }
-    private WebElement waitFor(String id) {
 
+    private WebElement waitFor(String id) {
         return waitFor(id, 5);
     }
+
     @SuppressWarnings("SameParameterValue")
     private WebElement waitFor(String id, int waitInterval) {
         return wait.until(visibilityOfElementLocated(id(id)));
@@ -125,6 +128,7 @@ public abstract class Page {
     }
 
 
+
     private WebElement cssWaitFor(String cssPath) {
         return wait.until(presenceOfElementLocated(cssSelector(cssPath)));
     }
@@ -134,9 +138,9 @@ public abstract class Page {
     }
 
     protected boolean exists(String id) {
-
-        return driver.findElement(By.id(id)) != null;
+        return driver.findElement(id(id)) != null;
     }
+
     protected void refresh() {
         driver.navigate().refresh();
     }
@@ -162,31 +166,4 @@ public abstract class Page {
         List<WebElement> tableElements = driver.findElements(By.xpath(xpath));
         return tableElements.size();
     }
-
-
-
-
-
-
-
-
-
-
-
-//    private WebElement waitFor(String id, int waitInterval) {
-//        return (new WebDriverWait(driver, waitInterval)).until(ExpectedConditions.presenceOfElementLocated(By.id(id)));
-//    }
-
-
-
-
-
-
-
-
-//    WebElement e = driver.findElement(cssSelector(path));
-//
-//    boolean enabled = e.isEnabled();
-//        return enabled;
-
 }
