@@ -5,14 +5,12 @@ Feature: Add Vet
 
   Scenario: Successfully add a Vet choosing type
     Given I am on the New Veterinarian form
-    And   I enter valid vet data with choosing type
-    When  I click Save Vet Button
+    When   I enter valid vet data with choosing type
     Then  The new vet will be displayed at the end of the vets's list
 
   Scenario: Successfully add a Vet without choosing type
     Given I am on the New Veterinarian form
-    And   I enter valid vet data without choosing type
-    When  I click Save Vet Button
+    When   I enter valid vet data without choosing type
     Then  The new vet will be displayed at the end of the vets's list
 
   Scenario: Unsuccessfully add a Vet
@@ -28,13 +26,11 @@ Feature: Add Vet
 
   Scenario: Submit Short data
     Given I am on the New Veterinarian form
-    And  I enter one character in both fields
-    When  I click Save Vet Button
+    When  I enter one character in both fields
     Then  The new short vet will be displayed at the end of the vets's list
 
   Scenario: Create Vet with symbols and numbers in fields
     Given I am on the New Veterinarian form
-    And   I enter symbols and numbers rather in fields
-    When  I click Save Vet Button
+    When   I enter symbols and numbers rather in fields
     Then  The new numeric vet will be displayed at the end of the vets's list
 

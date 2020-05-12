@@ -1,43 +1,69 @@
 package org.springframework.samples.petclinic.steps.vet;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.springframework.samples.petclinic.pages.AddVetPage;
+import org.springframework.samples.petclinic.pages.HomePage;
+import org.springframework.samples.petclinic.pages.vet.AddVetPage;
+import org.springframework.samples.petclinic.pages.vet.AllVetsPage;
+
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
 
 
 public class AddVetSteps {
-    private final AddVetPage addVet = new AddVetPage();
+    private HomePage homePage = new HomePage();
+    private AddVetPage addVet;
+    private AllVetsPage allVets;
+    //testing data
+    private String fname = "Foo";
+    private String lname = "Bar";
+    private String fullName = fname + " " + lname;
+    private String char1 = "X";
+    private String char2 = "Y";
+    private String shortComb = char1 + " " + char2;
+    private String numsym1 = "8347769245()?";
+    private String numsym2 = "&%^$#$%%6357";
+    private String numsymComb = numsym1 + " " + numsym2;
+
 
     //Scenario: Successfully add a Vet choosing type
     @Given("I am on the New Veterinarian form")
     public void iAmOnTheNewVeterinarianForm() {
-        addVet.navigateToAddVet();
+        addVet = homePage.goToAddVet();
         assertTrue(addVet.isCurrent());
     }
-    @And("I enter valid vet data with choosing type")
+
+    @When("I enter valid vet data with choosing type")
     public void iEnterValidVetDataWithChoosingType() {
-        addVet.fillValid();
+        addVet.fillData(fname, lname);
         addVet.chooseType();
     }
-    @When("I click Save Vet Button")
-    public void iClickSaveVetButton() {
-        addVet.clickSave();
-    }
+
     @Then("The new vet will be displayed at the end of the vets's list")
     public void theNewVetWillBeDisplayedAtTheEndOfTheVetsSList() {
+<<<<<<< HEAD
         assertTrue(addVet.isAdded());
 //        addVet.closeBrowser();
 
+=======
+        allVets = addVet.saveAndRedirect();
+        assertTrue(allVets.exists(fullName));
+        allVets.closeBrowser();
+>>>>>>> 30c6b0f7e4b8351acd0d3b98864f7e27bedd97f6
     }
 
+
     //Scenario: Successfully add a Vet without choosing type
-    @And("I enter valid vet data without choosing type")
+    @When("I enter valid vet data without choosing type")
     public void iEnterValidVetDataWithoutChoosingType() {
-        addVet.fillValid();
+        addVet.fillData(fname,lname);
+    }
+
+    //   Scenario: Unsuccessfully add a Vet
+    @When("I click Save Vet Button")
+    public void iClickSaveVetButton() {
+        addVet.clickSave();
+
     }
     @Then("page is not redirected")
     public void pageIsNotRedirected() {
@@ -49,7 +75,7 @@ public class AddVetSteps {
     //  Scenario: Short data
     @When("I enter a single character in both fields")
     public void iEnterASingleCharacterInBothFields() {
-        addVet.fillOneChar();
+        addVet.fillData(char1,char2);
     }
     @Then("I see error message specifying at least two chars long")
     public void iSeeErrorMessageSpecifyingAtLeastTwoCharsLong() {
@@ -59,24 +85,37 @@ public class AddVetSteps {
     }
 
     // Scenario: Submit Short data
-    @And("I enter one character in both fields")
+    @When("I enter one character in both fields")
     public void iEnterOneCharacterInBothFields() {
-        addVet.fillOneChar();
+        addVet.fillData(char1,char2);
     }
+
     @Then("The new short vet will be displayed at the end of the vets's list")
     public void theNewShortVetWillBeDisplayedAtTheEndOfTheVetsSList() {
+<<<<<<< HEAD
         assertTrue(addVet.isShortAdded());
 //        addVet.closeBrowser();
+=======
+        allVets = addVet.saveAndRedirect();
+        assertTrue(allVets.exists(shortComb));
+        allVets.closeBrowser();
+>>>>>>> 30c6b0f7e4b8351acd0d3b98864f7e27bedd97f6
     }
 
     //   Scenario: Create Vet with symbols and numbers in fields
-    @And("I enter symbols and numbers rather in fields")
+    @When("I enter symbols and numbers rather in fields")
     public void iEnterSymbolsAndNumbersRatherInFields() {
-        addVet.fillNumericAndSymbols();
+        addVet.fillData(numsym1,numsym2);
     }
     @Then("The new numeric vet will be displayed at the end of the vets's list")
     public void theNewNumericVetWillBeDisplayedAtTheEndOfTheVetsSList() {
+<<<<<<< HEAD
         assertTrue(addVet.isNumericSymbolsAdded());
 //        addVet.closeBrowser();
+=======
+        allVets = addVet.saveAndRedirect();
+        assertTrue(allVets.exists(numsymComb));
+        allVets.closeBrowser();
+>>>>>>> 30c6b0f7e4b8351acd0d3b98864f7e27bedd97f6
     }
 }

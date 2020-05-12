@@ -16,10 +16,6 @@ Feature: Add a new visit
 
   Scenario: Add new visit with invalid data
     Given I am on the add-visit form
-    And I enter invalid visit data
+    And I enter invalid data
     And I submit the visit form
     Then I will remain on the same page
-
-  Scenario: Add new visit for an owner with no pets
-    Given I am on the owner page
-    Then The add visit button is disabled
