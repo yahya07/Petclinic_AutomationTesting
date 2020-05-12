@@ -24,6 +24,7 @@ public class RemoveVisitSteps {
     @Then("the selected visit will be deleted from the visits list")
     public void theSelectedVisitWillBeDeletedFromTheVisitsList() {
         assertFalse(ownerInformationPage.checkDeleted());
+        ownerInformationPage.closeBrowser();
 
     }
 

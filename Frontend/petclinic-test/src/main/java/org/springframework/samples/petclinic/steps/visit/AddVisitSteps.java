@@ -39,6 +39,7 @@ public class AddVisitSteps {
     @Then("A new visit should be added to the owner page")
     public void aNewVisitShouldBeAddedToTheOwnerPage() {
         assertTrue(addVisitPage.visitAddedSuccessfully());
+        ownerInformationPage.closeBrowser();
     }
 
     @And("I enter invalid data")
@@ -49,6 +50,7 @@ public class AddVisitSteps {
     @Then("I will remain on the same page")
     public void iWillRemainOnTheSamePage() {
         assertTrue(addVisitPage.isOnSamePage());
+        addVisitPage.closeBrowser();
     }
 
 

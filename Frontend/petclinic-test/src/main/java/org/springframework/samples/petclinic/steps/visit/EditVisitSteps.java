@@ -41,6 +41,7 @@ public class EditVisitSteps {
     @Then("The updated visit will be displayed in the owner's page list")
     public void theUpdatedVisitWillBeDisplayedInTheOwnerSPageList() {
         assertEquals("description has been updated here!",ownerInformationPage.visitUpdatedSuccessfully());
+        ownerInformationPage.closeBrowser();
     }
 
     @And("I remove all values from all fields")
@@ -65,5 +66,6 @@ public class EditVisitSteps {
     @Then("I will stay on the same page")
     public void iWillStayOnTheSamePage() {
         assertFalse(ownerInformationPage.isCurrent());
+        ownerInformationPage.closeBrowser();
     }
 }
