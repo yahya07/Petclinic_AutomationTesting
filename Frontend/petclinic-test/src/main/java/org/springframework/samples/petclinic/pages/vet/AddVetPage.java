@@ -6,10 +6,10 @@ import org.springframework.samples.petclinic.pages.Page;
 
 
 public class AddVetPage extends Page {
-    private static final String URL = "http://localhost:8081/petclinic/vets/add";
-    private static final String SAVE_BUTTON = "#vet > div:nth-child(5) > div > button:nth-child(3)";
-    private static final String ERROR_CLASS = "help-block";
-    private static final String TWO_CHARS_ERROR = "First name must be at least 2 characters long";
+    private String url = "http://localhost:8081/petclinic/vets/add";
+    private String saveBtn = "#vet > div:nth-child(5) > div > button:nth-child(3)";
+    private String errClass = "help-block";
+    private String twoCharErr = "First name must be at least 2 characters long";
 
 
 
@@ -30,24 +30,24 @@ public class AddVetPage extends Page {
 
     public AllVetsPage saveAndRedirect() {
 
-        cssClick(SAVE_BUTTON);
+        cssClick(saveBtn);
         return new AllVetsPage(driver);
     }
 
     public void clickSave()
     {
-        cssClick(SAVE_BUTTON);
+        cssClick(saveBtn);
     }
 
 
     public boolean isTwoCharErrorShowing()
     {
-        return isErrorShowing(ERROR_CLASS,TWO_CHARS_ERROR);
+        return isErrorShowing(errClass, twoCharErr);
     }
 
     public boolean pageNotRedirected(){
 
-        return isCurrentUrl(URL);
+        return isCurrentUrl(url);
 }
 
 }
