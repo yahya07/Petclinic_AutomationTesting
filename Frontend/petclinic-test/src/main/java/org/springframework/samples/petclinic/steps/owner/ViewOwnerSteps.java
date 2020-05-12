@@ -4,9 +4,9 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.springframework.samples.petclinic.pages.AllOwnersPage;
+import org.springframework.samples.petclinic.pages.owner.AllOwnersPage;
 import org.springframework.samples.petclinic.pages.HomePage;
-import org.springframework.samples.petclinic.pages.OwnerPage;
+import org.springframework.samples.petclinic.pages.OwnerInformationPage;
 
 import java.util.logging.Level;
 
@@ -22,13 +22,13 @@ public class ViewOwnerSteps {
 
     private HomePage homePage = new HomePage();
     private AllOwnersPage allOwnersPage;
-    private OwnerPage ownerPage;
+    private OwnerInformationPage ownerInformationPage;
 
     //= new AllOwnersPage();
     @Before
     public void setup() {
-        homePage.clickOwners();
-        allOwnersPage = homePage.clickAllOwners();
+       // homePage.clickOwners();
+        allOwnersPage = homePage.goToOwnersList();
     }
 
     @Given("I am on all owners page where it contains at least an owner")
@@ -43,14 +43,14 @@ public class ViewOwnerSteps {
     @When("I click on OWNER linked name")
     public void iClickOnOWNERLinkedName() {
 
-        ownerPage = allOwnersPage.clickOnAnOwner();
+        ownerInformationPage = allOwnersPage.clickOnAnOwner();
 
     }
 
     @Then("I will be directed to the owner information page")
     public void iWillBeDirectedToTheOwnerInformationPage() {
 
-        assertTrue(ownerPage.isCurrent());
-        ownerPage.closeBrowser();
+        assertTrue(ownerInformationPage.isCurrent());
+        ownerInformationPage.closeBrowser();
     }
 }

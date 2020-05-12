@@ -5,8 +5,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.springframework.samples.petclinic.pages.AddOwnerPage;
-import org.springframework.samples.petclinic.pages.AllOwnersPage;
+import org.springframework.samples.petclinic.pages.owner.AddOwnerPage;
+import org.springframework.samples.petclinic.pages.owner.AllOwnersPage;
 import org.springframework.samples.petclinic.pages.HomePage;
 
 import java.util.logging.Level;
@@ -34,8 +34,8 @@ public class AddOwnerSteps {
 
     @Before
     public void setup() {
-        homePage.clickOwners();
-        addOwnerPage = homePage.ClickAddOwner();
+       // homePage.clickOwners();
+        addOwnerPage = homePage.goToAddOwner();
     }
 
     @Given("I am on the add-owner form")

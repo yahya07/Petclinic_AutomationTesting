@@ -6,7 +6,7 @@ Feature: View Owners
 
   Scenario: Successfully view owners via home page menu
     Given I am on the home page
-    When I click on OWNERS tab
-    And I click on ALL
+    When I click on ALL from the OWNERS tab
+
     Then  I will be directed to AllOwners page
 

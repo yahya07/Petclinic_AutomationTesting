@@ -6,6 +6,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.samples.petclinic.pages.*;
+import org.springframework.samples.petclinic.pages.owner.AllOwnersPage;
+import org.springframework.samples.petclinic.pages.owner.EditOwnerPage;
 
 import java.util.logging.Level;
 
@@ -21,16 +23,16 @@ public class EditOwnerSteps {
 
     private HomePage homePage;
     private AllOwnersPage allOwnersPage;
-    private OwnerPage ownerPage;
+    private OwnerInformationPage ownerInformationPage;
     private EditOwnerPage editOwnerPage;
 
     @Before
     public void setup() {
         homePage = new HomePage();
-        homePage.clickOwners();
-        allOwnersPage = homePage.clickAllOwners();
-        ownerPage = allOwnersPage.clickOnAnOwner();
-        editOwnerPage = ownerPage.clickEditOwner();
+        //homePage.clickOwners();
+        allOwnersPage = homePage.goToOwnersList();
+        ownerInformationPage = allOwnersPage.clickOnAnOwner();
+        editOwnerPage = ownerInformationPage.clickEditOwner();
     }
 
     @Given("I am on the edit owner information form")
@@ -50,13 +52,13 @@ public class EditOwnerSteps {
 
     @When("I submit the edit form")
     public void iSubmitTheEditForm() {
-        ownerPage = editOwnerPage.submit();
+        ownerInformationPage = editOwnerPage.submit();
     }
 
     @Then("The updated owner will be displayed in the Owner page with updated information")
     public void theUpdatedOwnerWillBeDisplayedInTheOwnerPageWithUpdatedInformation() {
-        assertTrue(ownerPage.isUpdated("Updated", "Updated"));
-        ownerPage.closeBrowser();
+        assertTrue(ownerInformationPage.isUpdated("Updated", "Updated"));
+        ownerInformationPage.closeBrowser();
     }
 
 

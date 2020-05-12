@@ -1,8 +1,10 @@
-package org.springframework.samples.petclinic.pages;
+package org.springframework.samples.petclinic.pages.owner;
 
 import org.openqa.selenium.WebDriver;
+import org.springframework.samples.petclinic.pages.OwnerInformationPage;
+import org.springframework.samples.petclinic.pages.Page;
 
-public class AllOwnersPage extends Page{
+public class AllOwnersPage extends Page {
 
     public static final String TITLE="Owners";
     private final String HEADERXPATH="body > app-root > app-owner-list > div > div > h2";
@@ -23,9 +25,9 @@ public int tableSize(){
         return sizeOfTable(ALL_OWNERS_TABLE);
 }
 
-    public OwnerPage clickOnAnOwner() {
+    public OwnerInformationPage clickOnAnOwner() {
         linkTextClick(getElements(ALL_OWNERS_TABLE).get(getElements(ALL_OWNERS_TABLE).size() - 1).getText());
-        return new OwnerPage(driver);
+        return new OwnerInformationPage(driver);
 
     }
 

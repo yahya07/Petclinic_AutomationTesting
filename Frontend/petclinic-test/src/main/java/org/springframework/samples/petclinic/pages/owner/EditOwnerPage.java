@@ -1,6 +1,8 @@
-package org.springframework.samples.petclinic.pages;
+package org.springframework.samples.petclinic.pages.owner;
 
 import org.openqa.selenium.WebDriver;
+import org.springframework.samples.petclinic.pages.OwnerInformationPage;
+import org.springframework.samples.petclinic.pages.Page;
 
 public class EditOwnerPage extends Page {
     public static final String FIRST_NAME_SELECTOR="firstName";
@@ -44,10 +46,10 @@ public void enterInvalidTelephone(){
     fill(TELEPHONE_SELECTOR,"aaa");
 
 }
-    public OwnerPage submit() {
+    public OwnerInformationPage submit() {
         System.out.println("in the submit method");
         cssClick("body > app-root > app-owner-edit > div > div > form > div:nth-child(7) > div > button:nth-child(2)");
-        return new OwnerPage(driver);
+        return new OwnerInformationPage(driver);
         // driver.get(driver.getCurrentUrl());
     }
     public boolean checkButtonDisability(){

@@ -1,12 +1,11 @@
 package org.springframework.samples.petclinic.steps.owner;
 
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import org.springframework.samples.petclinic.pages.AllOwnersPage;
+import org.springframework.samples.petclinic.pages.owner.AllOwnersPage;
 import org.springframework.samples.petclinic.pages.HomePage;
 
 
@@ -32,16 +31,12 @@ public class ViewOwnersSteps {
         assertTrue(homePage.isCurrent());
     }
 
-    @When("I click on OWNERS tab")
+    @When("I click on ALL from the OWNERS tab")
     public void iClickOnOwnersTab() {
-        homePage.clickOwners();
+        allOwnersPage = homePage.goToOwnersList();
 
     }
 
-    @And("I click on ALL")
-    public void iClickOnAll() {
-        allOwnersPage = homePage.clickAllOwners();
-    }
 
     @Then("I will be directed to AllOwners page")
     public void iWillBeDirectedToAllOwnersPage() {
