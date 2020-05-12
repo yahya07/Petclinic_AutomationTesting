@@ -43,7 +43,6 @@ public class EditVisitSteps {
         assertEquals("description has been updated here!",ownerInformationPage.visitUpdatedSuccessfully());
     }
 
-
     @And("I remove all values from all fields")
     public void iRemoveAllValuesFromAllFields() {
         editVisitPage.emptyFields();
