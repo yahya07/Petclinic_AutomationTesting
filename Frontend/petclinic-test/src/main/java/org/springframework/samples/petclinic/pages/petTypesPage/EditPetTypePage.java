@@ -20,6 +20,7 @@ public class EditPetTypePage extends Page {
 
     }
 
+
     public void NameFiled(String EditFiled) {
        fill(NameFiled, EditFiled);
 

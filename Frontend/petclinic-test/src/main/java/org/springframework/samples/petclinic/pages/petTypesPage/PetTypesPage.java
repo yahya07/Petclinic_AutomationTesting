@@ -36,6 +36,11 @@ public class PetTypesPage extends Page {
         cssClick("#pettype > div.form-group.has-feedback > div > button");
 
     }
+    public boolean PetTypesURL()
+    {
+        return  isCurrentUrl(URL);
+
+    }
 
     public int getPetTypesLength() {
         implicitlyWait(3);

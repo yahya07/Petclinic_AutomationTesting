@@ -8,6 +8,7 @@ import org.springframework.samples.petclinic.pages.HomePage;
 import org.springframework.samples.petclinic.pages.petTypesPage.EditPetTypePage;
 import org.springframework.samples.petclinic.pages.petTypesPage.PetTypesPage;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class EditPetTypesSteps {
@@ -42,7 +43,7 @@ public class EditPetTypesSteps {
 
     @Then("The new pet Type name will be displayed at the end of the Pet type's list")
     public void theNewPetTypeNameWillBeDisplayedAtTheEndOfThePetTypeSList() {
-        assertTrue(petTypesPage.isCurrent());
+        assertFalse(editPetTypePage.isCurrent());
         petTypesPage.closeBrowser();
     }
 
