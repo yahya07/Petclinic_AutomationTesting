@@ -18,8 +18,8 @@ public class EditPetSteps {
     private OwnerInformationPage ownerInformationPage;
     private EditPetPage editPetPage;
     private String name = "Updated";
-    private final String birthDate = "2019/01/01";
-    private final int index = 1;
+    private String birthDate = "2019/01/01";
+    private int index = 1;
 
     @Given("I am on the edit-pet form")
     public void iAmOnTheEditPetForm() {
