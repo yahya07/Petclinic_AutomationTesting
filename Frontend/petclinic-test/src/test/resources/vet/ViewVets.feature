@@ -4,6 +4,6 @@ Feature: View All Vets
   So that i can delete or update them.
 
   Scenario: Successfully view all Vets
-    Given I am on the homepage
+    Given I am starting from the homepage
     When  I click on All Veterinarians tab
     Then  page is redirected and im on all vets page

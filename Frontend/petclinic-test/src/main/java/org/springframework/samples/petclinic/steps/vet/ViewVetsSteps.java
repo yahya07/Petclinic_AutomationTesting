@@ -14,8 +14,9 @@ public class ViewVetsSteps {
     private HomePage homePage = new HomePage();
     private AllVetsPage allVets;
 
-    @Given("I am on the homepage")
-    public void iAmOnTheHomepage() {
+
+    @Given("I am starting from the homepage")
+    public void iAmStartingFromTheHomepage() {
         assertTrue(homePage.isCurrent());
     }
 
@@ -23,7 +24,6 @@ public class ViewVetsSteps {
     public void iClickOnAllVeterinariansTab() {
         allVets = homePage.goToVetsList();
     }
-
 
 
     @Then("page is redirected and im on all vets page")

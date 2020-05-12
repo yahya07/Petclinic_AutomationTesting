@@ -2,6 +2,7 @@ package org.springframework.samples.petclinic.pages;
 
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.springframework.samples.petclinic.pages.petTypesPage.PetTypesPage;
 import org.springframework.samples.petclinic.pages.vet.AddVetPage;
 import org.springframework.samples.petclinic.pages.vet.AllVetsPage;
 
