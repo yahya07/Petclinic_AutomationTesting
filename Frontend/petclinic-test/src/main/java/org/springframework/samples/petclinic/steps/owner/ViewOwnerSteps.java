@@ -20,12 +20,7 @@ public class ViewOwnerSteps {
     private AllOwnersPage allOwnersPage;
     private OwnerInformationPage ownerInformationPage;
 
-    //= new AllOwnersPage();
-//    @Before
-//    public void setup() {
-//       // homePage.clickOwners();
-//        allOwnersPage = homePage.goToOwnersList();
-//    }
+
 
     @Given("I am on all owners page where it contains at least an owner")
     public void iAmOnTheAllOwnerPage() {

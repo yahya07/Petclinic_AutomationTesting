@@ -32,14 +32,14 @@ public class AddOwnerSteps {
     @Given("I am on the add-owner form")
     public void iAmOnTheAddOwnerForm() {
         addOwnerPage = homePage.goToAddOwner();
-        System.out.println("wibble iAmOnTheAddOwnerForm");
+
         assertTrue(addOwnerPage.isCurrent());
     }
 
     @When("I enter valid owner data")
     public void iEnterValidData() {
 
-        System.out.println("wibble iEnterValidData");
+
         addOwnerPage.enterValidData();
 
 
@@ -50,7 +50,7 @@ public class AddOwnerSteps {
         //  assertTrue(addOwnerPage.checkTick());
         assertFalse(addOwnerPage.checkButtonDisability());
         addOwnerPage.closeBrowser();
-        System.out.println("wibble eachFieldWillHaveATickOnTheRight");
+
 
     }
 

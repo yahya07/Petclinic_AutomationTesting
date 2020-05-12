@@ -23,7 +23,7 @@ public class ViewOwnersSteps {
     @Given("I am on the home page for petclinic")
     public void iAmOnTheHomePage() {
 
-        System.out.println("wibble iAmOnTheHomePage");
+
         assertTrue(homePage.isCurrent());
     }
 
