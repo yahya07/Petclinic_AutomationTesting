@@ -5,7 +5,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.springframework.samples.petclinic.pages.owner.AddOwnerPage;
 import org.springframework.samples.petclinic.pages.owner.AllOwnersPage;
 import org.springframework.samples.petclinic.pages.petTypesPage.PetTypesPage;
-import org.springframework.samples.petclinic.pages.petTypesPage.PetTypesPage;
 import org.springframework.samples.petclinic.pages.vet.AddVetPage;
 import org.springframework.samples.petclinic.pages.vet.AllVetsPage;
 
@@ -68,15 +67,15 @@ public class HomePage extends Page {
         cssClick(pathPetTypes);
         return new PetTypesPage(driver);
     }
-    public PetTypesPage goToPetTypes(){
-        cssClick(pathPetTypes);
-        return new PetTypesPage(driver);
-    }
+//    public PetTypesPage goToPetTypes(){
+//        cssClick(pathPetTypes);
+//        return new PetTypesPage(driver);
+//    }
 
-    public Specialties goToSpecialties(){
-        cssClick(PATH_SPECIALTIES);
-        return new Specialties(driver);
-    }
+//    public Specialties goToSpecialties(){
+//        cssClick(PATH_SPECIALTIES);
+//        return new Specialties(driver);
+//    }
 
 
 
