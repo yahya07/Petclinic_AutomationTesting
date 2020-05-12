@@ -6,14 +6,14 @@ import org.springframework.samples.petclinic.pages.Page;
 
 public class AllOwnersPage extends Page {
 
-    public static final String TITLE="Owners";
+    private final String TITLE="Owners";
     private final String HEADERXPATH="body > app-root > app-owner-list > div > div > h2";
     private final String HOME_PAGE_NAVIGATOR_PATH="body > app-root > div.container-fluid > nav > div > ul > li.dropdown.open > ul > li:nth-child(1) > a";
     private final String ALL_OWNERS_TABLE="/html/body/app-root/app-owner-list/div/div/div/table/tbody/tr/td[1]";
 
     public AllOwnersPage(WebDriver driver){
 
-      super(TITLE, driver);
+      super("TITLE", driver);
     }
 
     public boolean isAdded(String FIRST_NAME,String LAST_NAME) {

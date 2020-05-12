@@ -24,7 +24,7 @@ public class ViewOwnersSteps {
     private HomePage homePage = new HomePage();
     private AllOwnersPage allOwnersPage;
 
-    @Given("I am on the home page")
+    @Given("I am on the home page for petclinic")
     public void iAmOnTheHomePage() {
 
         System.out.println("wibble iAmOnTheHomePage");

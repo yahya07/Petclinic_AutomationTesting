@@ -5,7 +5,7 @@ Feature: View Owners
   our customers information.
 
   Scenario: Successfully view owners via home page menu
-    Given I am on the home page
+    Given I am on the home page for petclinic
     When I click on ALL from the OWNERS tab
 
     Then  I will be directed to AllOwners page

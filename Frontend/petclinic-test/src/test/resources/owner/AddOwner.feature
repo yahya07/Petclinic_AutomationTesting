@@ -6,7 +6,7 @@ Feature: Add Owner
   Scenario: Successfully enter a new owner's details
     Given I am on the add-owner form
     When  I enter valid owner data
-    Then  The submit button is enabled
+    Then  The add owner submit button is enabled
 #
   Scenario: Successfully add an owner
     Given I am on the add-owner form
@@ -16,12 +16,12 @@ Feature: Add Owner
 ##
   Scenario: Unsuccessfully add an owner
     Given I am on the add-owner form
-    When  I enter invalid data
-    Then  The submit button is disabled
+    When  I enter owner invalid data
+    Then  The add owner submit button is disabled
 #
   Scenario: Short data
     Given I am on the add-owner form
-    When  I enter invalid data
+    When  I enter owner invalid data
     Then  I see a specific message for each field specifying that the field must be at least chars long
 
 #  Scenario: Remove values from all the fields
@@ -34,7 +34,7 @@ Feature: Add Owner
   Scenario: Phone number must be numeric
     Given I am on the add-owner form
     And   I enter a non-numeric value into the phone field
-    Then  The submit button is disabled
+    Then  The add owner submit button is disabled
     And   I see an error message specifying that the phone number only accepts digits
 
 

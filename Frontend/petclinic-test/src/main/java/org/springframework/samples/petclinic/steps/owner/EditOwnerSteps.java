@@ -41,17 +41,17 @@ public class EditOwnerSteps {
         assertTrue(editOwnerPage.isCurrent());
     }
 
-    @And("I clear all fields")
+    @And("I clear all fields of edit owner form")
     public void iClearAllFields() {
         editOwnerPage.clearField();
     }
 
-    @And("I Enter updated valid data")
+    @And("I Enter owner updated valid data")
     public void iEnterUpdatedValidData() {
         editOwnerPage.enterValidUpdatedData();
     }
 
-    @When("I submit the edit form")
+    @When("I submit the edit owner form")
     public void iSubmitTheEditForm() {
         ownerInformationPage = editOwnerPage.submit();
     }
@@ -74,7 +74,7 @@ public class EditOwnerSteps {
         editOwnerPage.enterInvalidTelephone();
     }
 
-    @Then("The edit submit button is disabled")
+    @Then("The owner edit submit button is disabled")
     public void theEditSubmitButtonIsDisabled() {
         assertTrue(editOwnerPage.checkButtonDisability());
         editOwnerPage.closeBrowser();

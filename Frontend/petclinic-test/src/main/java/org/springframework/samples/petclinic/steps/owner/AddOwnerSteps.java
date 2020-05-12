@@ -54,7 +54,7 @@ public class AddOwnerSteps {
 
     }
 
-    @Then("The submit button is enabled")
+    @Then("The add owner submit button is enabled")
     public void eachFieldWillHaveATickOnTheRight() {
         //  assertTrue(addOwnerPage.checkTick());
         assertFalse(addOwnerPage.checkButtonDisability());
@@ -75,16 +75,16 @@ public class AddOwnerSteps {
 
     }
 
-    @When("I enter invalid data")
+    @When("I enter owner invalid data")
     public void iEnterInvalidData() {
         addOwnerPage.enterInvalidData();
     }
 
-    @Then("The submit button is disabled")
+    @Then("The add owner submit button is disabled")
     public void theSubmitButtonIsDisabled() {
 
         assertTrue(addOwnerPage.checkButtonDisability());
-        
+
     }
 
     @Then("I see a specific message for each field specifying that the field must be at least chars long")

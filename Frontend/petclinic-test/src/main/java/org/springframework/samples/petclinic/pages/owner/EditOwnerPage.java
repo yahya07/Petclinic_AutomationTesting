@@ -5,14 +5,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.samples.petclinic.pages.Page;
 
 public class EditOwnerPage extends Page {
-    public static final String FIRST_NAME_SELECTOR="firstName";
-    public static final String LAST_NAME_SELECTOR="lastName";
-    public static final String ADDRESS_SELECTOR="address";
-    public static final String CITY_SELECTOR="city";
-    public static final String TELEPHONE_SELECTOR="telephone";
-    public static final String UPDATED_TEXT="Updated";
-    public static final String UPDATED_PHONE_NUM="11111";
-    public static final String UPDATE_BUTTON="body > app-root > app-owner-edit > div > div > form > div:nth-child(7) > div > button:nth-child(2)";
+    private final String FIRST_NAME_SELECTOR="firstName";
+    private final String LAST_NAME_SELECTOR="lastName";
+    private final String ADDRESS_SELECTOR="address";
+    private final String CITY_SELECTOR="city";
+    private final String TELEPHONE_SELECTOR="telephone";
+    private final String UPDATED_TEXT="Updated";
+    private final String UPDATED_PHONE_NUM="11111";
+    private final String UPDATE_BUTTON="body > app-root > app-owner-edit > div > div > form > div:nth-child(7) > div > button:nth-child(2)";
 
     public EditOwnerPage(WebDriver driver){
         super("Edit Owner", driver);
