@@ -13,6 +13,7 @@ public class AllOwnersPage extends Page {
     public AllOwnersPage(WebDriver driver){
 
         super("Owners", driver);
+
     }
 
     public boolean isAdded(String FIRST_NAME,String LAST_NAME) {
@@ -20,9 +21,10 @@ public class AllOwnersPage extends Page {
         return fullName.equals(getElements(ALL_OWNERS_TABLE).get(getElements(ALL_OWNERS_TABLE).size()-1).getText());
     }
 
-    public int tableSize(){
+
+public int tableSize(){
         return sizeOfTable(ALL_OWNERS_TABLE);
-    }
+}
 
     public OwnerInformationPage clickOnAnOwner() {
         linkTextClick(getElements(ALL_OWNERS_TABLE).get(getElements(ALL_OWNERS_TABLE).size() - 1).getText());
@@ -42,3 +44,4 @@ public class AllOwnersPage extends Page {
     }
 
 }
+

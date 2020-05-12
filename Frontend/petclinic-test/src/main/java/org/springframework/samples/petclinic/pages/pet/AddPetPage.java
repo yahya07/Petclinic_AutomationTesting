@@ -1,8 +1,8 @@
 package org.springframework.samples.petclinic.pages.pet;
 
 import org.openqa.selenium.WebDriver;
-import org.springframework.samples.petclinic.pages.owner.OwnerInformationPage;
 import org.springframework.samples.petclinic.pages.Page;
+import org.springframework.samples.petclinic.pages.owner.OwnerInformationPage;
 
 public class AddPetPage extends Page {
 

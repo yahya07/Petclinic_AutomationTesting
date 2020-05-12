@@ -40,3 +40,4 @@ public class EditVisitPage extends Page {
         cssFill(DESCRIPTION_FILED_CSS," ");
     }
 }
+
