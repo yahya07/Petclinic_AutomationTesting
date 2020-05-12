@@ -27,7 +27,6 @@ public class EditVetSteps {
     @When("I click edit button the for the first vet")
     public void iClickEditButtonTheForTheFirstVet() {
         editVet = allVets.editFirst();
-        assertTrue(editVet.isCurrent());
     }
 
     @And("I enter valid data")
