@@ -67,13 +67,13 @@ public class OwnerInformationPage extends Page {
     }
 
     public EditVisitPage editVisitPage(){
-        cssClick("body > app-root > app-owner-detail > div > div > table:nth-child(10) > tr > app-pet-list:nth-child(2) > table > tr > td:nth-child(2) > app-visit-list > table > tr:nth-child(2) > td:nth-child(3) > button:nth-child(1)");
+        cssClick("body > app-root > app-owner-detail > div > div > table:nth-child(10) > tr > app-pet-list:nth-child(1) > table > tr > td:nth-child(2) > app-visit-list > table > tr:nth-child(2) > td:nth-child(3) > button:nth-child(1)");
         return new EditVisitPage(driver);
     }
 
     public OwnerInformationPage removeVisit(){
 
-        cssClick("body > app-root > app-owner-detail > div > div > table:nth-child(10) > tr > app-pet-list:nth-child(2) > table > tr > td:nth-child(2) > app-visit-list > table > tr:nth-child(3) > td:nth-child(3) > button:nth-child(2)");
+        cssClick("body > app-root > app-owner-detail > div > div > table:nth-child(10) > tr > app-pet-list:nth-child(1) > table > tr > td:nth-child(2) > app-visit-list > table > tr:nth-child(2) > td:nth-child(3) > button:nth-child(1)");
         refresh();
         return new OwnerInformationPage(driver);
     }
@@ -83,6 +83,6 @@ public class OwnerInformationPage extends Page {
     }
 
     public boolean checkDeleted(){
-        return driver.getPageSource().contains("This will be removed");
+        return driver.getPageSource().contains("This will be deleted after update");
     }
 }
