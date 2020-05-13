@@ -69,6 +69,11 @@ public class EditVetSteps {
         allVets = editVet.saveAndRedirect();
 
     }
+    @Then("The edited vet should not be displayed in all vets list")
+    public void theEditedVetShouldNotBeDisplayedInAllVetsList() {
+        assertFalse(allVets.isCurrent());
+        allVets.closeBrowser();
+    }
 
     //   Scenario: Successfully click back button from edit form
     @And("I click back button in edit vet form")
@@ -81,5 +86,7 @@ public class EditVetSteps {
         assertTrue(allVets.isCurrent());
         allVets.closeBrowser();
     }
+
+
 }
 
