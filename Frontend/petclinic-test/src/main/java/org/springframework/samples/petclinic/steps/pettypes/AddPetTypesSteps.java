@@ -6,9 +6,11 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.samples.petclinic.pages.HomePage;
 import org.springframework.samples.petclinic.pages.petTypesPage.PetTypesPage;
+
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class AddPetTypesSteps {
+public class    AddPetTypesSteps {
 
         private HomePage homePage = new HomePage();
         private PetTypesPage petTypesPage;
@@ -62,5 +64,11 @@ public class AddPetTypesSteps {
     public void iSubmitThePetTypeName() {
         petTypesPage.clickSaveButton();
 
+    }
+
+    @Then("The new Pet Type will not be displayed at the end of the Pet Type's list")
+    public void theNewPetTypeWillNotBeDisplayedAtTheEndOfThePetTypeSList() {
+        assertFalse(petTypesPage.chickAdd());
+        petTypesPage.closeBrowser();
     }
 }
