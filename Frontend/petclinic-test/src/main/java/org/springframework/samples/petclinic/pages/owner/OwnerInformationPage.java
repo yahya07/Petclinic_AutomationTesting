@@ -72,8 +72,8 @@ public class OwnerInformationPage extends Page {
     }
 
     public OwnerInformationPage removeVisit(){
-
-        cssClick("body > app-root > app-owner-detail > div > div > table:nth-child(10) > tr > app-pet-list:nth-child(1) > table > tr > td:nth-child(2) > app-visit-list > table > tr:nth-child(2) > td:nth-child(3) > button:nth-child(1)");
+        implicitlyWait(10);
+        cssClick("body > app-root > app-owner-detail > div > div > table:nth-child(10) > tr > app-pet-list:nth-child(1) > table > tr > td:nth-child(2) > app-visit-list > table > tr:nth-child(2) > td:nth-child(3) > button:nth-child(2)");
         refresh();
         return new OwnerInformationPage(driver);
     }
